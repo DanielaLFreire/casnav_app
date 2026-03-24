@@ -3,3 +3,4 @@
 
 # Ignorar a pasta venv
 /venv/
+/.streamlit/secrets.toml
