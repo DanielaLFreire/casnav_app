@@ -1,0 +1,67 @@
+{
+  "nome_projeto": "CASNAV DMarSup",
+  "titulo": "Projeto Sistemas Marítimos Não Tripulados",
+  "coordenador": "Leandro Aparecido Simal Moreira",
+  "concedente": "Fundação de Estudos do Mar - FEMAR",
+  "data_inicio": "2025-08-01",
+  "duracao_meses": 36,
+  "mes_1_referencia": "Agosto/2025",
+  "atividades": [
+    {
+      "codigo": "3.1",
+      "nome": "Incremento do dataset",
+      "descricao": "Incrementar o dataset de imagens de embarcações, por meio de novos conjuntos de imagens e vídeos de câmeras e rotulações de imagens.",
+      "meses_inicio": 1,
+      "meses_fim": 6,
+      "entregas": "1 dataset rotulado com diferentes classes de embarcações de superfície."
+    },
+    {
+      "codigo": "3.2",
+      "nome": "Armazenamento e acesso multiusuário",
+      "descricao": "Desenvolver solução de armazenamento e acesso multiusuário para os datasets do projeto.",
+      "meses_inicio": 7,
+      "meses_fim": 12,
+      "entregas": "1 sistema de armazenamento e acesso multiusuário para datasets."
+    },
+    {
+      "codigo": "3.3",
+      "nome": "Pesquisa em modelos de redes neurais",
+      "descricao": "Pesquisar, treinar e validar modelos robustos de redes neurais profundas para detecção e classificação automática de embarcações de superfície.",
+      "meses_inicio": 13,
+      "meses_fim": 18,
+      "entregas": "1 modelo de rede neural profunda especializada em detecção e classificação automática de embarcações de superfície no ambiente marítimo."
+    },
+    {
+      "codigo": "3.4",
+      "nome": "Solução para estabilização de vídeos",
+      "descricao": "Pesquisar, implementar e validar técnicas de estabilização de vídeos para uso no sistema de monitoramento.",
+      "meses_inicio": 13,
+      "meses_fim": 18,
+      "entregas": "1 módulo de estabilização de vídeo para o sistema de monitoramento."
+    },
+    {
+      "codigo": "3.5",
+      "nome": "Módulo de visão computacional especializado",
+      "descricao": "Pesquisar, implementar e validar técnicas clássicas de visão computacional complementares para detecção automática de embarcações de superfície.",
+      "meses_inicio": 19,
+      "meses_fim": 24,
+      "entregas": "1 módulo de visão computacional especializado em detectar automaticamente embarcações de superfície no ambiente marítimo."
+    },
+    {
+      "codigo": "3.6",
+      "nome": "Estimativa de localização de embarcações de superfície",
+      "descricao": "Pesquisar, implementar e validar técnicas para estimar a localização de embarcações de superfície detectadas automaticamente.",
+      "meses_inicio": 25,
+      "meses_fim": 30,
+      "entregas": "1 biblioteca de estimadores de localização de superfície."
+    },
+    {
+      "codigo": "3.7",
+      "nome": "Integração de IA/VC ao sistema de monitoramento",
+      "descricao": "Integrar as soluções de IA e VC obtidos ao sistema de monitoramento real já em operação (câmera fixas) e ao drone marítimo.",
+      "meses_inicio": 31,
+      "meses_fim": 36,
+      "entregas": "1 sistema de monitoramento costeiro robustecido por métodos inteligentes de análise de imagens."
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "bolsista_id": "daniela_freire",
+  "bolsista_nome": "Daniela Lopes Freire",
+  "numero_termo": "66/2025",
+  "mes_execucao_num": 8,
+  "_projeto": "CASNAV DMarSup",
+  "_coordenador": "Leandro Aparecido Simal Moreira",
+  "nome_bolsista": "Daniela Lopes Freire",
+  "periodo_referencia": "01/03/2026 a 31/03/2026",
+  "data_preenchimento": "2026-03-24",
+  "mes_execucao": "Mês 8",
+  "responsavel": "Daniela Lopes Freire",
+  "atividade_principal": [
+    "3.1 Incremento do dataset",
+    "3.3 Pesquisa em modelos de redes neurais"
+  ],
+  "atividades_secundarias": "Revisão da literatura de computação visual aplicada a embarcações.",
+  "faixa_cronograma": "meses 1–6 (Ago/2025 a Jan/2026)",
+  "conexao_cronograma": "As atividades do período se concentraram na revisão da literatura de computação visual aplicada a embarcações, na ampliação do conjunto de dados por meio de datasets públicos com filtragem por similaridade visual (atividade 3.1) e em estudos e experimentos iniciais com modelos de detecção de objetos (atividade 3.3). Esse trabalho fortalece a base de dados e antecipa a preparação técnica necessária para as etapas subsequentes de treinamento, validação e especialização dos modelos.",
+  "status_atividade": [
+    "adiantada em relação ao cronograma",
+    "atrasada em relação ao cronograma",
+    "executada parcialmente fora da faixa originalmente prevista"
+  ],
+  "explicacao_status": "Houve sobreposição de efeitos: a atividade 3.1 iniciou com atraso porque a contratação da bolsista ocorreu no mês 4, deslocando sua conclusão. Em paralelo, a atividade 3.3 foi antecipada de forma exploratória para permitir estudos comparativos e reduzir riscos técnicos futuros.",
+  "resumo_executivo": "A principal contribuição do período foi a construção do dataset InatechShips_25K_similar, com 25.000 imagens de embarcações selecionadas por similaridade mínima de 60% em relação às imagens reais do dataset CITRA_3D, ampliando em 8,75 vezes a base atual do projeto. Em paralelo, foram conduzidos experimentos comparativos com YOLOv8, YOLOv11, YOLOv26 e YOLOStarLS_adapted, consolidando uma linha inicial de avaliação de arquiteturas. Também avançou a revisão de literatura em computação visual aplicada ao domínio marítimo. Como próximos passos, prevê-se a unificação dos datasets CITRA_3D e InatechShips_25K_similar, a aplicação de técnicas avançadas de data augmentation e a repetição dos experimentos com a base consolidada.",
+  "atividades": [
+    {
+      "codigo": "3.1",
+      "nome": "3.1 Incremento do dataset",
+      "situacao": "Em andamento",
+      "objetivo": "Pesquisar, selecionar e extrair de datasets públicos de embarcações (com foco no InaTechShips, 3M+ imagens, 200+ classes) subconjuntos de imagens que ampliem quantitativa e qualitativamente a base do projeto (CITRA-3D, 2.857 imagens, 9 classes), mantendo aderência visual ao cenário real de operação por meio de filtragem automática baseada em similaridade semântica.",
+      "descricao": "Atividade voltada à curadoria e expansão do dataset do projeto a partir do InaTechShips (Teixeira, Mafra & De Figueiredo, Ocean Engineering, 2025), o maior dataset público de embarcações do mundo com mais de 3 milhões de imagens e 200+ classes. Foram desenvolvidos dois pipelines complementares: (a) construção de um subset balanceado de 25.000 imagens (dataset_25k), com 2.500 imagens por classe para 10 tipos de embarcações, estruturado em formato YOLO com split 60/20/20; e (b) construção do dataset InatechShips_25K_similar, com 25.000 imagens filtradas por similaridade visual ≥60% em relação às imagens reais do CITRA-3D, utilizando embeddings CLIP ViT-B-32 e similaridade cosseno. Ambos os datasets foram organizados com anotações em formato YOLO, metadados JSON e configuração data.yaml para treinamento imediato.",
+      "estagio": [
+        "implementação",
+        "testes",
+        "documentação"
+      ],
+      "realizado": "Foram desenvolvidos três scripts principais de coleta: inatechships_download_v4.py (orquestrador no Google Colab para extração de metadados ZIP, seleção de IDs e montagem do dataset YOLO), download_playwright.py (automação de browser Chromium via Playwright para contornar Cloudflare) e download_direto.py (download via CDN com padrão de URL /photos/big/{d1}/{d2}/{d3}/{id}.jpg, sem necessidade de browser). Paralelamente, foi desenvolvido o pipeline de filtragem por similaridade semântica: embeddings CLIP ViT-B-32 (OpenCLIP) são computados para cada imagem candidata e comparados por produto escalar normalizado (similaridade cosseno) com embeddings pré-calculados das imagens reais do CITRA-3D, armazenados em cache .npz. Imagens com similaridade ≥0,60 a pelo menos uma referência são aceitas; um mecanismo de blacklist (threshold 0,90) descarta banners recorrentes do site. O dataset_25k atingiu 25.000 imagens perfeitamente balanceadas (10 classes, 2.500 cada) e o InatechShips_25K_similar atingiu a meta de 25.000 imagens, ampliando em 8,75 vezes o volume do CITRA-3D (2.857 imagens).",
+      "falta": "Ainda falta unificar o CITRA-3D ao InatechShips_25K_similar, harmonizando o mapeamento de classes entre os dois datasets (10 classes InaTechShips vs. 9 classes CITRA-3D), validar a consistência da base consolidada quanto a duplicatas e aderência ao domínio marítimo, e aplicar técnicas avançadas de data augmentation para equilibrar classes minoritárias (e.g., “Navio” no CITRA-3D, com menos de 1% das amostras). Também está pendente o incremento da base por vídeos de câmeras de vigilância marítima e a medição formal do desbalanceamento (coeficiente de Gini) no dataset unificado.",
+      "metodos": "Coleta: download_direto.py (Linux, requests + CDN direto), download_playwright.py (Linux, automação Chromium via Playwright), inatechships_download_v4.py (Google Colab, orquestração do pipeline completo). Filtragem semântica: CLIP ViT-B-32 via OpenCLIP + PyTorch, similaridade cosseno com cache de embeddings em .npz. Processamento: Python 3, numpy, Pillow, tqdm, requests, BeautifulSoup4, shutil, pathlib, PyYAML, sqlite3 (cookies Chrome). Infraestrutura: Google Colab (GPU A100), máquina local Linux, Google Drive (sincronização via rclone). Formato: anotações YOLO .txt com bounding boxes normalizados, metadados JSON por imagem (Vessel_Type, IMO, MMSI), data.yaml, split 60/20/20 com seed=42.",
+      "entregas_parciais": "Sim",
+      "inicio_real": "Novembro/2025 (mês 4 do projeto)",
+      "pct_periodo": 50,
+      "quais_entregas": "Dataset dataset_25k com 25.000 imagens balanceadas (10 classes × 2.500), perfeitamente particionado em train/val/test (60/20/20) com Gini ≈ 0,00. Dataset InatechShips_25K_similar com 25.000 imagens filtradas por similaridade CLIP ≥60% ao CITRA-3D. Scripts reprodutíveis de coleta, filtragem e montagem (repositório GitHub DanielaLFreire/InaTechShips). Documento de análise comparativa do dataset_25k. Arquivos data.yaml, metadados JSON e labels em formato YOLO. Apresentação técnica do pipeline para o grupo de pesquisa.",
+      "prazo_original": "Meses 1-6 do projeto (agosto/2025 a janeiro/2026)",
+      "pct_acum": 50,
+      "previsao": "Julho/2026 (mês 12 do projeto)",
+      "dificuldades": "Bloqueio por Cloudflare nas requisições automatizadas ao shipspotting.com, exigindo estratégias alternativas de download (Playwright com browser real e posterior migração para acesso direto via CDN). Desconexões frequentes do Google Colab durante processamento longo, mitigadas por scripts com retomada automática via JSON de progresso. Custo de armazenamento elevado (contratação particular de Google One). Risco de baixa aderência de imagens públicas ao domínio real de operação do CITRA-3D, mitigado pelo limiar de similaridade CLIP a 60%. Aproximadamente 5% dos IDs originais do subset não possuíam label no repositório GitHub (falha de segmentação do PointRend), exigindo substituição por IDs de reserva.",
+      "marco": "Concluir e validar o dataset unificado CITRA-3D + InatechShips_25K_similar, com classes harmonizadas, balanceamento medido por coeficiente de Gini, e configuração data.yaml pronta para treinamento reprodutível de modelos de detecção YOLO.",
+      "relevancia": "alta"
+    },
+    {
+      "codigo": "3.3",
+      "nome": "3.3 Pesquisa em modelos de redes neurais",
+      "situacao": "Em andamento",
+      "objetivo": "Pesquisar, treinar e validar modelos robustos de redes neurais profundas para detecção e classificação automática de embarcações de superfície.",
+      "descricao": "Atividade de pesquisa aplicada com foco na investigação sistemática de arquiteturas YOLO para detecção de embarcações marítimas. Foram conduzidos seis experimentos controlados (EXP-A a EXP-F) no dataset CITRA-3D (2.857 imagens, 9 classes), utilizando estudos de ablação para isolar a contribuição individual de cada componente arquitetural (backbone, neck e head) e testar a hipótese de que arquiteturas especializadas para o domínio marítimo superam modelos genéricos pré-treinados.",
+      "estagio": [
+        "planejamento",
+        "implementação",
+        "treinamento",
+        "ajuste fino",
+        "testes",
+        "documentação"
+      ],
+      "realizado": "Foram conduzidos seis experimentos sistemáticos no dataset CITRA-3D com configurações idênticas de treino (100 épocas, 1280px, batch 8): EXP-A (YOLOv8m baseline: CSPDarknet + PANet) atingiu 78,61% mAP@0.5; EXP-B (YOLO-StarLS Hybrid: ResNet18 + CSAR) obteve 63,70%; EXP-C (YOLO26m: CSPDarknet + PANet + NMS-Free) alcançou 78,60%; EXP-D (CSPDarknet + CSAR) resultou em 63,13%; EXP-E (CSAR fiel ao artigo + EDPD Head) chegou a 64,27%; e EXP-F testou a combinação híbrida PANet + CSAR Refinement. A análise de ablação revelou que o componente Neck é o fator crítico: o PANet tradicional (~78,6% mAP) supera consistentemente o CSAR especializado (~63-64% mAP) em aproximadamente 15 pontos percentuais, independentemente do backbone ou head utilizado. Essa descoberta refuta a hipótese original do artigo YOLO-StarLS (Symmetry 2025) para o domínio CITRA-3D.",
+      "falta": "Ainda falta concluir o EXP-G para isolar a contribuição do componente EDPD, repetir os experimentos mais promissores com o dataset unificado (CITRA-3D + InatechShips_25K_similar), investigar técnicas de transfer learning com modelos pré-treinados em COCO usando PANet, aprofundar a análise dos problemas de instabilidade numérica (NaN/gradientes explosivos) identificados no stem AHWD do YOLO-StarLS, e consolidar a documentação científica dos resultados comparativos para publicação.",
+      "metodos": "Google Colab com GPU T4/A100; PyTorch (treinamento customizado em Float32 para estabilidade numérica); Ultralytics (framework YOLO para EXP-A e EXP-C); torchvision (ResNet18 pré-treinado ImageNet); OpenCV; numpy; pandas; matplotlib; seaborn; TensorBoard (monitoramento de treino); pipelines customizados: preparar_citra3d_completo.py (reorganização do dataset), yolov8_training_pipeline.py (baseline), exp_a_yolov8m_citra3d.py a exp_f_hybrid_panet_csar_nmsfree.py (série de ablação); protocolo Duo-Confidence (conf=0,001 para mAP científico, conf=0,25 para métricas operacionais); métricas: mAP@0.5, mAP@0.5:0.95, Precision, Recall, FPS, GFLOPs e contagem de parâmetros.",
+      "entregas_parciais": "Sim",
+      "inicio_real": "Novembro/2025 (atividade antecipada de forma exploratória)",
+      "pct_periodo": 40,
+      "quais_entregas": "Seis experimentos completos de ablação (EXP-A a EXP-F) com checkpoints, logs e métricas; tabela comparativa de resultados por arquitetura com mAP@0.5 no test set do CITRA-3D; relatórios técnicos das Fases 1 e A; scripts reprodutíveis de preparação do CITRA-3D e treinamento; apresentação de análise de componentes (EXP-A a EXP-E) documentando a refutação da hipótese CSAR; e benchmarks científicos com protocolo Duo-Confidence.",
+      "prazo_original": "Meses 13-18 do projeto (agosto/2026 a janeiro/2027)",
+      "pct_acum": 40,
+      "previsao": "Dezembro/2026 (mês 17 do projeto)",
+      "dificuldades": "Instabilidade numérica (NaN/gradientes explosivos) nos componentes wavelet de alta frequência do stem AHWD do YOLO-StarLS, exigindo desabilitação de AMP e uso exclusivo de Float32; custo elevado de infraestrutura em Google Colab com desconexões frequentes durante treinamentos longos; necessidade de implementação manual de componentes do artigo original (CSAR, EDPD, FTNRC) por ausência de código-fonte público; e dependência da base CITRA-3D consolidada para validações comparativas definitivas.",
+      "marco": "Concluir a série completa de ablação (incluindo EXP-G), treinar e comparar os modelos mais promissores na base unificada CITRA-3D + InatechShips_25K_similar, e produzir documentação científica reprodutível com resultados consolidados.",
+      "relevancia": "alta"
+    },
+    {
+      "codigo": "3.5",
+      "nome": "3.5 Módulo de visão computacional especializado",
+      "situacao": "Não Iniciada",
+      "obs": "Atividade prevista para meses 19–24. Sem execução no período."
+    },
+    {
+      "codigo": "3.6",
+      "nome": "3.6 Estimativa de localização de embarcações de superfície",
+      "situacao": "Não Iniciada",
+      "obs": "Atividade prevista para meses 25–30. Sem execução no período."
+    }
+  ],
+  "prox_atividades": "Concluir a atividade 3.1 (incremento do dataset) e avançar na atividade 3.3 com novos treinamentos na base unificada.",
+  "prox_previsao": "Atividade 1: julho/2026\nAtividade 2: dezembro/2026\nAtividade 3: não se aplica no período",
+  "prox_entregaveis": "1 dataset rotulado com diferentes classes de embarcações de superfície, validado e pronto para uso em novos ciclos de treinamento.",
+  "prox_risco": "Sim",
+  "prox_risco_explicacao": "Riscos relacionados à disponibilidade de infraestrutura computacional, tempo de processamento e validação da aderência do dataset ampliado.",
+  "prox_mitigacao": "Priorizar unificação e validação do dataset e otimizar o uso dos recursos disponíveis.",
+  "curva_justificativa": "A estimativa de 50% considera principalmente a materialização do dataset InatechShips_25K_similar, que representa a principal entrega física do período, além da produção de scripts, metadados, estruturação YOLO e resultados experimentais preliminares. Embora ainda não haja entrega final validada, houve avanço concreto, verificável e com alto peso técnico para a continuidade do projeto.",
+  "dif_tecnicas": "Sim",
+  "dif_tecnicas_quais": "Recursos computacionais insuficientes para treinar modelos e armazenar datasets em escala adequada.",
+  "dif_ajuste": "Sim",
+  "dif_apoio": "Sim",
+  "dif_infra": "Sim",
+  "dif_infra_detalhe": "Há necessidade atual de recursos computacionais mais robustos para treinamento de modelos e armazenamento do dataset ampliado.",
+  "consideracoes_finais": "",
+  "_salvamento": "20260324_082817",
+  "_arquivo": "formulario_daniela_freire_mes8_20260324_082817.json"
+}

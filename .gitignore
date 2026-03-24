@@ -1,0 +1,6 @@
+# Ignorar a pasta datasets
+/datasets/
+
+# Ignorar a pasta venv
+/venv/
+
