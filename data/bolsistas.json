@@ -1,0 +1,206 @@
+{
+  "bolsistas": [
+    {
+      "id": "victor",
+      "nome": "Victor",
+      "nome_completo": "Victor",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
+      "valor_mensal": 0,
+      "prazo_meses": 0,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        }
+      ],
+      "observacoes": "Dados completos a serem preenchidos"
+    },
+    {
+      "id": "guilherme",
+      "nome": "Guilherme",
+      "nome_completo": "Guilherme",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
+      "valor_mensal": 0,
+      "prazo_meses": 0,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        }
+      ],
+      "observacoes": "Dados completos a serem preenchidos"
+    },
+    {
+      "id": "gabriel_saad",
+      "nome": "Gabriel Saad",
+      "nome_completo": "Gabriel Saad",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
+      "valor_mensal": 0,
+      "prazo_meses": 0,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        }
+      ],
+      "observacoes": "Dados completos a serem preenchidos"
+    },
+    {
+      "id": "andre_ferreira",
+      "nome": "André Ferreira",
+      "nome_completo": "André Ferreira",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
+      "valor_mensal": 0,
+      "prazo_meses": 0,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        }
+      ],
+      "observacoes": "Dados completos a serem preenchidos"
+    },
+    {
+      "id": "daniela_freire",
+      "nome": "Daniela Lopes Freire",
+      "nome_completo": "Daniela Lopes Freire",
+      "numero_termo": "66/2025",
+      "email": "danielalopesfreire@gmail.com",
+      "formacao": "Pós Doutora em Inteligência Artificial",
+      "tempo_atuacao": "5 anos",
+      "lattes": "https://lattes.cnpq.br/6536197860909061",
+      "data_inicio_bolsa": "2025-11-01",
+      "valor_mensal": 5200.0,
+      "prazo_meses": 28,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        },
+        {
+          "codigo": "3.3",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "3.5",
+          "periodicidade": "Mês 19 ao Mês 24",
+          "meses_inicio": 19,
+          "meses_fim": 24
+        },
+        {
+          "codigo": "3.6",
+          "periodicidade": "Mês 25 ao Mês 30",
+          "meses_inicio": 25,
+          "meses_fim": 30
+        }
+      ],
+      "observacoes": "Ingressou no mês 4 do projeto (novembro/2025). Dados extraídos do Termo de Concessão de Bolsa nº 66/2025."
+    },
+    {
+      "id": "dannylo_mauricio",
+      "nome": "Dannylo C. Maurício",
+      "nome_completo": "Dannylo C. Maurício",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
+      "valor_mensal": 0,
+      "prazo_meses": 0,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        },
+        {
+          "codigo": "3.3",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "3.5",
+          "periodicidade": "Mês 19 ao Mês 24",
+          "meses_inicio": 19,
+          "meses_fim": 24
+        },
+        {
+          "codigo": "3.6",
+          "periodicidade": "Mês 25 ao Mês 30",
+          "meses_inicio": 25,
+          "meses_fim": 30
+        }
+      ],
+      "observacoes": "Dados completos a serem preenchidos"
+    },
+    {
+      "id": "wanderson_correa",
+      "nome": "Wanderson Corrêa",
+      "nome_completo": "Wanderson Corrêa",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
+      "valor_mensal": 0,
+      "prazo_meses": 0,
+      "atividades_designadas": [
+        {
+          "codigo": "3.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        },
+        {
+          "codigo": "3.5",
+          "periodicidade": "Mês 19 ao Mês 24",
+          "meses_inicio": 19,
+          "meses_fim": 24
+        },
+        {
+          "codigo": "3.2",
+          "periodicidade": "Mês 7 ao Mês 12",
+          "meses_inicio": 7,
+          "meses_fim": 12
+        },
+        {
+          "codigo": "3.6",
+          "periodicidade": "Mês 25 ao Mês 30",
+          "meses_inicio": 25,
+          "meses_fim": 30
+        },
+        {
+          "codigo": "3.7",
+          "periodicidade": "Mês 31 ao Mês 36",
+          "meses_inicio": 31,
+          "meses_fim": 36
+        }
+      ],
+      "observacoes": "Dados completos a serem preenchidos"
+    }
+  ]
+}
