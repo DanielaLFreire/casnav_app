@@ -140,17 +140,19 @@ def salvar_formulario(data):
 
 
 def salvar_relatorio(data):
+    """Salva relatório (local + GitHub). Nome determinístico = sobrescreve ao regravar."""
     bid = data.get("bolsista_id", "unificado")
     mes = data.get("mes_referencia_num", "0")
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    fn = "relatorio_%s_mes%s_%s.json" % (bid, mes, ts)
+    # FIX: nome determinístico (sem timestamp), mesmo padrão de salvar_formulario
+    fn = "relatorio_%s_mes%s.json" % (bid, mes)
     data["_salvamento"] = ts
     data["_arquivo"] = fn
 
     # Salva local
     save_json(REL_DIR / fn, data)
 
-    # Salva no GitHub
+    # Salva no GitHub (idêntico ao salvar_formulario)
     if _use_github():
         gh_path = "%s/%s" % (_gh_relatorios_dir(), fn)
         gh.write_json(gh_path, data,

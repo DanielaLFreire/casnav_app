@@ -1,5 +1,6 @@
 import streamlit as st
-from functions_aux import (load_bolsistas, load_projeto, get_todos_formularios)
+from functions_aux import (load_bolsistas, load_projeto, get_todos_formularios,
+                           salvar_relatorio)  # FIX: adicionado salvar_relatorio
 from report import gerar_relatorio
 from config import hoje, render_sidebar
 from export_utils import render_botoes_download
@@ -43,6 +44,10 @@ def page_unificado():
         partes = [f"# RELATÓRIO UNIFICADO — {proj['nome_projeto']}\n**Mês:** {mes_sel} | **Data:** {hoje.strftime('%d/%m/%Y')}\n---\n"]
         for i, f in enumerate(forms_mes, 1):
             rel = gerar_relatorio(f, proj)
+
+            # FIX: persistir cada relatório individual (local + GitHub)
+            salvar_relatorio(rel)
+
             partes.append(f"\n## {i}. {rel['bolsista_nome']} (Termo {rel['numero_termo']})\n")
             partes.append(rel["bloco1_tecnico"])
             partes.append(rel["bloco2_gantt"])

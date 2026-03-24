@@ -164,6 +164,10 @@ def page_relatorio():
         rel = gerar_relatorio(form, proj)
         st.session_state["rel_ind"] = rel
 
+        # FIX: persistir relatório automaticamente (local + GitHub)
+        fn_rel = salvar_relatorio(rel)
+        st.success(f"✅ Relatório gerado e salvo: **{fn_rel}**")
+
     if "rel_ind" in st.session_state:
         rel = st.session_state["rel_ind"]
         t1, t2, t3, t4 = st.tabs(["📝 Técnico", "📊 Gantt", "📉 Curva S", "📋 Resumo"])
@@ -172,7 +176,7 @@ def page_relatorio():
         with t3: st.markdown(rel["bloco3_curva_s"])
         with t4: st.markdown(rel["bloco4_resumo"])
 
-        # Salvar
+        # Botão manual de salvar (fallback, agora redundante mas inofensivo)
         if st.button("💾 Salvar Relatório"):
             fn = salvar_relatorio(rel)
             st.success(f"✅ Salvo: {fn}")
