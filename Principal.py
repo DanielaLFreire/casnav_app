@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 from functions_aux import (load_bolsistas,load_projeto,
                            get_todos_formularios, get_todos_relatorios)
 
-from config import mes_atual, hoje, mes_para_data, mes_label_curto
+from config import mes_atual, hoje, mes_para_data, mes_label_curto, render_sidebar
 
 # ═══════════════════════════════════════════════════
 #  DASHBOARD
@@ -223,6 +223,8 @@ def main():
         <h1>🚢 CASNAV DMarSup </h1>
         <p>Projeto Sistemas Marítimos Não Tripulados | Visão Computacional</p>
     </div>""", unsafe_allow_html=True)
+
+    render_sidebar()
     # =============================================================================
     # TABS PRINCIPAIS
     # =============================================================================

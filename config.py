@@ -68,11 +68,14 @@ def periodo_referencia_auto(mes_num: int) -> str:
 # ═══════════════════════════════════════════════════
 # SIDEBAR
 # ═══════════════════════════════════════════════════
-with st.sidebar:
-    st.markdown("### 🚢 CASNAV DMarSup")
-    st.markdown("**Visão Computacional**")
-    st.markdown("---")
-    hoje = date.today()
-    mes_atual = data_para_mes(hoje)
-    st.markdown(f"📅 **{mes_label(mes_atual)}**")
-    st.markdown(f"**Hoje:** {hoje.strftime('%d/%m/%Y')}")
+
+hoje = date.today()
+mes_atual = data_para_mes(hoje)
+
+def render_sidebar():
+    with st.sidebar:
+        st.markdown("### 🚢 CASNAV DMarSup")
+        st.markdown("**Visão Computacional**")
+        st.markdown("---")
+        st.markdown(f"📅 **{mes_label(mes_atual)}**")
+        st.markdown(f"**Hoje:** {hoje.strftime('%d/%m/%Y')}")

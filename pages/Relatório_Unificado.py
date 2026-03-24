@@ -1,7 +1,7 @@
 import streamlit as st
 from functions_aux import (load_bolsistas,load_projeto, get_todos_formularios)
 from report import gerar_relatorio
-from config import hoje
+from config import hoje, render_sidebar
 # ═══════════════════════════════════════════════════
 #  RELATÓRIO UNIFICADO
 # ═══════════════════════════════════════════════════
@@ -58,7 +58,7 @@ def main():
         <h1>🚢 CASNAV DMarSup </h1>
         <p>Projeto Sistemas Marítimos Não Tripulados | Visão Computacional</p>
     </div>""", unsafe_allow_html=True)
-
+    render_sidebar()
     page_unificado()
 
 

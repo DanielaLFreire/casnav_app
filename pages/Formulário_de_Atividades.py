@@ -5,7 +5,7 @@ Mês 1 do Projeto = Agosto/2025
 """
 
 import streamlit as st
-from config import SITUACAO_OPTS, EST_OPTS, mes_atual, hoje, periodo_referencia_auto, mes_label_curto
+from config import SITUACAO_OPTS, EST_OPTS, mes_atual, hoje, periodo_referencia_auto, render_sidebar
 from functions_aux import (load_bolsistas,load_projeto, salvar_formulario,
                            get_ultimo_formulario, calcular_atividades_do_periodo,
                            calcular_faixa_planejada, prefill_gantt_inicio_plan, prefill_gantt_termino_plan)
@@ -150,11 +150,11 @@ def page_formulario():
         if ativs_desig:
             st.markdown("### 4. Detalhamento das Atividades")
 
-            tabs_det = st.tabs([ai["codigo"] for ai in ativs_info])
+            tabs_det = st.tabs(["Atividade " + ai["codigo"] for ai in ativs_info])
 
             for idx, (tab, ai) in enumerate(zip(tabs_det, ativs_info)):
                 with tab:
-                    k = f"Atividade a{idx}_"
+                    k = f"a{idx}_"
                     ss_key = f"sit_{bolsista['id']}_{idx}"
                     situacao = st.session_state.get(ss_key, "Não Iniciada")
 
@@ -337,7 +337,7 @@ def main():
         <h1>🚢 CASNAV DMarSup </h1>
         <p>Projeto Sistemas Marítimos Não Tripulados | Visão Computacional</p>
     </div>""", unsafe_allow_html=True)
-
+    render_sidebar()
     page_formulario()
 
 # EXECUÇÃO

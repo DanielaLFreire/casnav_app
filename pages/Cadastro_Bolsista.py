@@ -2,6 +2,8 @@
 import streamlit as st
 
 from functions_aux import (load_bolsistas,load_projeto, save_bolsistas)
+from config import render_sidebar
+
 
 
 # ═══════════════════════════════════════════════════
@@ -56,7 +58,7 @@ def main():
         <h1>🚢 CASNAV DMarSup </h1>
         <p>Projeto Sistemas Marítimos Não Tripulados | Visão Computacional</p>
     </div>""", unsafe_allow_html=True)
-
+    render_sidebar()
     page_bolsistas()
 
 # EXECUÇÃO
