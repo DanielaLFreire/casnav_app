@@ -1,8 +1,10 @@
 import streamlit as st
 from datetime import datetime, date, timedelta
-from functions_aux import (load_projeto,  salvar_relatorio, get_todos_formularios)
+from functions_aux import (load_projeto, salvar_relatorio, get_todos_formularios)
+from export_utils import render_botoes_download
 
- #═══════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════
 #  GERAR RELATÓRIO INDIVIDUAL
 # ═══════════════════════════════════════════════════
 def gerar_relatorio(form: dict, proj: dict) -> dict:
@@ -39,7 +41,7 @@ Status: {', '.join(form.get('status_atividade', ['—']))}
         bloco1 += "\n#### Atividades Concluídas\n"
         for a in concluidas:
             bloco1 += f"""
-**{a.get('nome', a.get('codigo','—'))}** — ✅ Concluída
+**{a.get('nome', a.get('codigo','—'))}** — Concluída
 - Objetivo: {a.get('objetivo','—')}
 - Descrição: {a.get('descricao','—')}
 - Entregas: {a.get('entregas','—')}
@@ -54,7 +56,7 @@ Status: {', '.join(form.get('status_atividade', ['—']))}
         bloco1 += "\n#### Atividades em Andamento\n"
         for a in em_andamento:
             bloco1 += f"""
-**{a.get('nome', a.get('codigo','—'))}** — 🔵 Em andamento
+**{a.get('nome', a.get('codigo','—'))}** — Em andamento
 - Estágio: {', '.join(a.get('estagio', ['—']))}
 - Realizado: {a.get('realizado','—')}
 - Falta: {a.get('falta','—')}
@@ -68,7 +70,7 @@ Status: {', '.join(form.get('status_atividade', ['—']))}
         bloco1 += "\n#### Atividades Impedidas\n"
         for a in impedidas:
             bloco1 += f"""
-**{a.get('nome', a.get('codigo','—'))}** — 🔴 Impedida
+**{a.get('nome', a.get('codigo','—'))}** — Impedida
 - Motivo: {a.get('motivo_impedimento','—')}
 - Previsão de desbloqueio: {a.get('previsao_desbloqueio','—')}
 """
@@ -130,7 +132,7 @@ Entregáveis: {form.get('prox_entregaveis', '—')}
 """
 
     return {
-        "bolsista_id": form.get("bolsista_id",""), "bolsista_nome": nome,
+        "bolsista_id": form.get("bolsista_id", ""), "bolsista_nome": nome,
         "numero_termo": termo, "periodo": periodo,
         "mes_referencia_num": form.get("mes_execucao_num", 0),
         "bloco1_tecnico": bloco1, "bloco2_gantt": bloco2,
@@ -170,12 +172,15 @@ def page_relatorio():
         with t3: st.markdown(rel["bloco3_curva_s"])
         with t4: st.markdown(rel["bloco4_resumo"])
 
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("💾 Salvar"):
-                fn = salvar_relatorio(rel)
-                st.success(f"✅ Salvo: {fn}")
-        with col2:
-            full = "\n---\n".join([rel["bloco1_tecnico"], rel["bloco2_gantt"], rel["bloco3_curva_s"], rel["bloco4_resumo"]])
-            st.download_button("📥 Baixar (.md)", full, file_name=f"relatorio_{rel.get('bolsista_id','x')}.md")
+        # Salvar
+        if st.button("💾 Salvar Relatório"):
+            fn = salvar_relatorio(rel)
+            st.success(f"✅ Salvo: {fn}")
 
+        # Download em 3 formatos
+        st.markdown("#### 📥 Baixar Relatório")
+        full = "\n---\n".join([rel["bloco1_tecnico"], rel["bloco2_gantt"],
+                                rel["bloco3_curva_s"], rel["bloco4_resumo"]])
+        fname = f"relatorio_{rel.get('bolsista_id', 'x')}_mes{rel.get('mes_referencia_num', 0)}"
+        titulo = f"Relatório — {rel.get('bolsista_nome', '')} — Mês {rel.get('mes_referencia_num', '')}"
+        render_botoes_download(full, fname, titulo)

@@ -17,6 +17,7 @@ from functions_aux import (load_bolsistas, load_projeto, salvar_formulario,
                            calcular_faixa_planejada, prefill_gantt_inicio_plan,
                            prefill_gantt_termino_plan, get_formularios_bolsista)
 from report import gerar_relatorio
+from export_utils import render_botoes_download
 
 
 # ═══════════════════════════════════════════════════
@@ -46,8 +47,9 @@ def exibir_relatorio_salvo(form_salvo: dict, proj: dict, bolsista: dict, mes_ref
         st.markdown(rel["bloco4_resumo"])
 
     full = "\n---\n".join([rel["bloco1_tecnico"], rel["bloco4_resumo"]])
-    st.download_button("📥 Baixar Relatório (.md)", full,
-                       file_name=f"relatorio_{bolsista['id']}_mes{mes_ref}.md")
+    fname = f"relatorio_{bolsista['id']}_mes{mes_ref}"
+    titulo = f"Relatório — {bolsista['nome']} — {mes_label(mes_ref)}"
+    render_botoes_download(full, fname, titulo)
 
     # Botão para editar
     if st.button("✏️ Editar formulário", key="btn_editar"):
@@ -381,8 +383,9 @@ def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
             st.markdown(rel["bloco4_resumo"])
 
         full = "\n---\n".join([rel["bloco1_tecnico"], rel["bloco4_resumo"]])
-        st.download_button("📥 Baixar Relatório (.md)", full,
-                           file_name=f"relatorio_{rel.get('bolsista_id','x')}.md")
+        fname = f"relatorio_{rel.get('bolsista_id', 'x')}_mes{rel.get('mes_referencia_num', 0)}"
+        titulo = f"Relatório — {rel.get('bolsista_nome', '')} — Mês {rel.get('mes_referencia_num', '')}"
+        render_botoes_download(full, fname, titulo)
 
 
 # ═══════════════════════════════════════════════════

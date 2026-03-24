@@ -1,7 +1,10 @@
 import streamlit as st
-from functions_aux import (load_bolsistas,load_projeto, get_todos_formularios)
+from functions_aux import (load_bolsistas, load_projeto, get_todos_formularios)
 from report import gerar_relatorio
 from config import hoje, render_sidebar
+from export_utils import render_botoes_download
+
+
 # ═══════════════════════════════════════════════════
 #  RELATÓRIO UNIFICADO
 # ═══════════════════════════════════════════════════
@@ -18,12 +21,12 @@ def page_unificado():
         st.warning("Nenhum formulário salvo.")
         return
 
-    meses = sorted(set(str(f.get("mes_execucao_num","?")) for f in formularios))
+    meses = sorted(set(str(f.get("mes_execucao_num", "?")) for f in formularios))
     mes_sel = st.selectbox("Mês de referência", meses)
-    forms_mes = [f for f in formularios if str(f.get("mes_execucao_num","?")) == mes_sel]
+    forms_mes = [f for f in formularios if str(f.get("mes_execucao_num", "?")) == mes_sel]
 
     # Status de preenchimento
-    nomes_ok  = set(f.get("bolsista_nome","?") for f in forms_mes)
+    nomes_ok  = set(f.get("bolsista_nome", "?") for f in forms_mes)
     nomes_all = set(b["nome"] for b in bdata["bolsistas"])
     faltam    = nomes_all - nomes_ok
 
@@ -47,11 +50,21 @@ def page_unificado():
             partes.append("\n---\n")
         texto = "\n".join(partes)
         st.session_state["unificado"] = texto
+        st.session_state["unificado_mes"] = mes_sel
 
     if "unificado" in st.session_state:
         st.markdown(st.session_state["unificado"])
-        st.download_button("📥 Baixar Unificado (.md)", st.session_state["unificado"],
-                          file_name=f"unificado_mes{mes_sel}.md")
+
+        # Download em 3 formatos
+        st.markdown("---")
+        st.markdown("#### 📥 Baixar Relatório Unificado")
+        mes = st.session_state.get("unificado_mes", "0")
+        render_botoes_download(
+            st.session_state["unificado"],
+            f"unificado_mes{mes}",
+            f"Relatório Unificado — {proj['nome_projeto']} — Mês {mes}"
+        )
+
 
 def main():
     st.markdown("""<div class="main-header">
