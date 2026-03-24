@@ -1,0 +1,61 @@
+{
+  "bolsista_id": "daniela_freire",
+  "bolsista_nome": "Daniela Lopes Freire",
+  "numero_termo": "66/2025",
+  "mes_execucao_num": 5,
+  "_projeto": "CASNAV DMarSup",
+  "_coordenador": "Leandro Aparecido Simal Moreira",
+  "nome_bolsista": "Daniela Lopes Freire",
+  "periodo_referencia": "01/12/2025 a 31/12/2025",
+  "data_preenchimento": "24/03/2026",
+  "mes_execucao": "Mês 5 do projeto (Mês 5 — Dez/2025)",
+  "responsavel": "Daniela Lopes Freire",
+  "atividade_principal": [
+    "3.1 Incremento do dataset"
+  ],
+  "atividades_secundarias": "Revisão da literatura.",
+  "faixa_cronograma": "meses 1-6 (Ago/2025 a Jan/2026)",
+  "conexao_cronograma": "",
+  "status_atividade": [
+    "dentro da fase originalmente prevista"
+  ],
+  "explicacao_status": "",
+  "resumo_executivo": "Esudando.",
+  "atividades": [
+    {
+      "codigo": "3.1",
+      "nome": "3.1 Incremento do dataset",
+      "situacao": "Não Iniciada"
+    },
+    {
+      "codigo": "3.3",
+      "nome": "3.3 Pesquisa em modelos de redes neurais",
+      "situacao": "Não Iniciada"
+    },
+    {
+      "codigo": "3.5",
+      "nome": "3.5 Módulo de visão computacional especializado",
+      "situacao": "Não Iniciada"
+    },
+    {
+      "codigo": "3.6",
+      "nome": "3.6 Estimativa de localização de embarcações de superfície",
+      "situacao": "Não Iniciada"
+    }
+  ],
+  "prox_atividades": "Atividade 3.1",
+  "prox_previsao": "",
+  "prox_entregaveis": "",
+  "prox_risco": "Não",
+  "prox_risco_explicacao": "",
+  "prox_mitigacao": "",
+  "dif_tecnicas": "Não",
+  "dif_tecnicas_quais": "",
+  "dif_ajuste": "Não",
+  "dif_apoio": "Não",
+  "dif_infra": "Não",
+  "dif_infra_detalhe": "",
+  "consideracoes_finais": "Este mes é so ler.",
+  "_salvamento": "20260324_140235",
+  "_arquivo": "formulario_daniela_freire_mes5.json"
+}
