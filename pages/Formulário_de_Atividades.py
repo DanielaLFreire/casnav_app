@@ -47,7 +47,7 @@ def exibir_relatorio_salvo(form_salvo: dict, proj: dict, bolsista: dict, mes_ref
     with t1:
         st.markdown(rel["bloco1_tecnico"])
     with t2:
-        st.markdown(rel["bloco2_resumo"])
+        st.markdown(rel["bloco4_resumo"])
 
     # Ações
     st.markdown("---")
@@ -55,7 +55,7 @@ def exibir_relatorio_salvo(form_salvo: dict, proj: dict, bolsista: dict, mes_ref
 
     with col_dl:
         full = "\n---\n".join([
-            rel["bloco1_tecnico"], rel["bloco2_resumo"]
+            rel["bloco1_tecnico"], rel["bloco4_resumo"]
         ])
         st.download_button(
             "📥 Baixar Relatório (.md)", full,
@@ -343,9 +343,9 @@ def exibir_formulario(proj, bolsista, mes_ref, atividades, form_existente=None):
         with t1:
             st.markdown(rel["bloco1_tecnico"])
         with t2:
-            st.markdown(rel["bloco2_resumo"])
+            st.markdown(rel["bloco4_resumo"])
 
-        full = "\n---\n".join([rel["bloco1_tecnico"], rel["bloco2_resumo"]])
+        full = "\n---\n".join([rel["bloco1_tecnico"], rel["bloco4_resumo"]])
         st.download_button("📥 Baixar Relatório (.md)", full,
                            file_name=f"relatorio_{rel.get('bolsista_id','x')}.md")
 
