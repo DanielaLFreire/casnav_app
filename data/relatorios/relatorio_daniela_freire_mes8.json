@@ -9,7 +9,7 @@
   "bloco3_curva_s": "## BLOCO 3 — SÍNTESE FÍSICA PARA CURVA S\n\n| Indicador | Valor |\n|-----------|-------|\n| Entregas concluídas | Nenhuma |\n| Entregas parciais | — |\n| % avanço período | 0% |\n| % avanço acumulado | 0% |\n\n**Justificativa:** —\n**Contribuíram:** —\n**Riscos:** —\n**Aceleradores:** —\n",
   "bloco4_resumo": "## BLOCO 4 — RESUMO EXECUTIVO\n\nNo período de novembro/2025 a março/2026 (meses 4 a 7 do projeto), a bolsista conduziu avanço técnico consistente em duas frentes centrais: ampliação qualificada do dataset de embarcações e investigação sistemática de arquiteturas de redes neurais profundas para detecção automática. Na atividade 3.1, foram construídos dois datasets a partir do InaTechShips: o dataset_25k (25.000 imagens balanceadas em 10 classes) e o InatechShips_25K_similar (25.000 imagens filtradas por similaridade CLIP ao CITRA-3D), ampliando em 8,75 vezes o volume original da base do projeto. Na atividade 3.3, antecipada do mês 13 para o mês 4, foram conduzidos seis experimentos de ablação (EXP-A a EXP-F), revelando que o PANet supera o CSAR em ~15 pontos percentuais de mAP. Embora nenhuma atividade tenha sido concluída integralmente, as entregas parciais são substanciais, verificáveis e com alto peso técnico. O avanço físico acumulado é estimado em 40%.\n",
   "tipo": "individual",
-  "gerado_em": "2026-03-24T13:41:11.061680",
-  "_salvamento": "20260324_134111",
+  "gerado_em": "2026-03-24T13:41:58.587791",
+  "_salvamento": "20260324_134158",
   "_arquivo": "relatorio_daniela_freire_mes8.json"
 }
