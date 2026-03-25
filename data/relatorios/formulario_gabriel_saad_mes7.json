@@ -1,0 +1,58 @@
+{
+  "bolsista_id": "gabriel_saad",
+  "bolsista_nome": "Gabriel Saad",
+  "numero_termo": "",
+  "mes_execucao_num": 7,
+  "_projeto": "CASNAV DMarSup",
+  "_coordenador": "Leandro Aparecido Simal Moreira",
+  "nome_bolsista": "Gabriel Saad",
+  "periodo_referencia": "01/02/2026 a 28/02/2026",
+  "data_preenchimento": "25/03/2026",
+  "mes_execucao": "Mês 7 do projeto (Mês 7 — Fev/2026)",
+  "responsavel": "Gabriel Saad",
+  "atividade_principal": [
+    "3.1 Incremento do dataset"
+  ],
+  "atividades_secundarias": "Desenvolvimento de um software de estabilização de câmera (com foco na otimização da captura de imagens e processamento de dados de hardware, como câmeras ZED, para os modelos de visão);",
+  "faixa_cronograma": "meses 1-7 (Ago/2025 a Fev/2026)",
+  "conexao_cronograma": "As atividades desenvolvidas no período possuem dupla associação com o planejamento. Estão diretamente vinculadas à Atividade 1.1 (meses 1 a 6), cumprindo o levantamento e organização de dados hidrodinâmicos para a calibração do gêmeo digital. Paralelamente, atuam como suporte antecipado e estratégico à Atividade 1.2 (meses 7 a 18). O desenvolvimento do software de estabilização de câmera e a estruturação prévia de rótulos de datasets visam garantir a integridade, nitidez e padronização das imagens. Essa antecipação mitiga riscos de qualidade na base de dados, otimizando as futuras fases de treinamento dos modelos de detecção de objetos.",
+  "status_atividade": [
+    "dentro da fase originalmente prevista"
+  ],
+  "explicacao_status": "Observa-se a execução simultânea de frentes estratégicas. A etapa de dados hidrodinâmicos (Atividade 1.1) ocorreu dentro do intervalo previsto (meses 1 a 6), mantendo total aderência ao planejamento. Em paralelo, a criação do software de estabilização de câmera e a harmonização de datasets públicos configuram um adiantamento tático das rotinas de percepção visual (Atividade 1.2). Essas medidas proativas não representam desvios negativos; pelo contrário, são ações preparatórias indispensáveis para assegurar a qualidade dos insumos visuais antes do início massivo dos treinamentos, beneficiando o fluxo global do cronograma.",
+  "resumo_executivo": "No período avaliado, o avanço técnico concentrou-se na estruturação de bases de dados e parâmetros para a modelagem do sistema. A equipe atuou na estimativa e organização de coeficientes hidrodinâmicos e inerciais para o gêmeo digital, utilizando literatura naval e dados hidrostáticos. Simultaneamente, impulsionou-se a frente de visão computacional por meio de duas frentes: a harmonização de datasets públicos (tratamento de labels e padronização) e o desenvolvimento de um software de estabilização de câmera. Esta última ferramenta é vital para garantir que os frames capturados possuam a estabilidade necessária para não comprometer a acurácia dos algoritmos de detecção. De modo geral, o período consolida insumos essenciais, com entregas parciais robustas que preparam o terreno para as etapas de modelagem, data augmentation e treinamento das redes neurais.",
+  "atividades": [
+    {
+      "codigo": "3.1",
+      "nome": "3.1 Incremento do dataset",
+      "situacao": "Em andamento",
+      "estagio": [
+        "implementação"
+      ],
+      "objetivo": "Ampliar e qualificar a base de dados visuais (imagens e vídeos) de embarcações de superfície, com o intuito de maximizar a acurácia, a robustez e a capacidade de generalização dos modelos de detecção de objetos previstos para a Fase 1 do projeto.",
+      "descricao": "Realização de coleta de dados por meio de pesquisas específicas. O processo inclui o tratamento, organização e a rotulagem manual de novas classes de embarcações, consolidando um dataset completo para fins de modelagem e validação.",
+      "realizado": "Foram adquiridos novos conjuntos de imagens aéreas e executada uma triagem rigorosa de dados externos, marcando o início da consolidação das bases. Concluiu-se a padronização dos formatos de anotação e deu-se andamento à harmonização semântica das classes de embarcações, assegurando que o dataset unificado mantenha total aderência aos requisitos técnicos e operacionais do projeto.",
+      "falta": "Finalizar a integração integral das bases e aplicar técnicas de data augmentation para corrigir eventuais desbalanceamentos entre as classes. Restam também a geração da estrutura de particionamento no formato YOLO (arquivo data.yaml), a elaboração do relatório analítico de desbalanceamento (baseado no índice de Gini) e a redação do draft da documentação científica associada ao dataset",
+      "pct_periodo": 70,
+      "pct_acum": 75,
+      "dificuldades": "O principal desafio reside na harmonização de classes entre datasets de origens distintas e na manutenção da consistência semântica durante a rotulagem, fundamental para evitar vieses nos experimentos de EXP-G que serão realizados na base unificada",
+      "previsao": "Abril/2026",
+      "marco": "Consolidação definitiva do dataset unificado com padronização de anotações e harmonização de classes de embarcações."
+    }
+  ],
+  "prox_atividades": "Prosseguir com a integração dos conjuntos de dados, priorizando a unificação total das bases escolhidas e a padronização definitiva das estruturas e formatos de anotação. Executar o alinhamento semântico das classes entre os diferentes bancos de imagens, assegurando compatibilidade com as metas do projeto. Empregar métodos de data augmentation e balanceamento para minimizar vieses e otimizar a capacidade de generalização dos algoritmos de visão computacional. Estabelecer processos rigorosos de verificação de qualidade, garantindo que os dados sejam íntegros e aderentes ao cenário marítimo. Por fim, estruturar o dataset final para pipelines reprodutíveis de treinamento, contemplando a divisão dos conjuntos (treinamento, validação e teste) e a elaboração da respectiva documentação",
+  "prox_previsao": "Abril de 2026",
+  "prox_entregaveis": "Base de dados unificada e validada, contendo a partição no formato YOLO e o arquivo data.yaml; relatório de análise de desbalanceamento (baseado no índice de Gini) da base consolidada; resultados apurados das execuções do EXP-G; reavaliação dos experimentos de maior sucesso utilizando o dataset integrado; e versão preliminar (draft) da documentação científica.",
+  "prox_risco": "Não",
+  "prox_risco_explicacao": "",
+  "prox_mitigacao": "",
+  "dif_tecnicas": "Sim",
+  "dif_tecnicas_quais": "Os principais obstáculos técnicos envolveram a grande diversidade nos formatos de anotação das bases originais, o que demandou a criação de rotinas de conversão e ajustes manuais para adequação aos pipelines de visão computacional. Constataram-se também inconsistências nos rótulos (classes divergentes, ausência de padronização semântica e labels incompletas), exigindo um esforço extra de validação e higienização. Além disso, as restrições de infraestrutura computacional — tanto para armazenamento quanto para o processamento de grandes volumes de imagem — afetaram o ritmo das etapas de consolidação. A falta de documentação clara em certas bases públicas também dificultou o entendimento das estruturas originais. Por último, o rigor necessário para filtrar apenas dados estritamente aderentes ao escopo marítimo do projeto elevou a complexidade do processo de triagem.",
+  "dif_ajuste": "Sim",
+  "dif_apoio": "Sim",
+  "dif_infra": "Sim",
+  "dif_infra_detalhe": "",
+  "consideracoes_finais": "Durante o período de referência, obteve-se um progresso sólido na expansão do dataset, com foco na triagem, fusão e padronização de conjuntos de dados públicos de embarcações. Embora a atividade siga em andamento, as entregas atuais já configuram um salto qualitativo na estruturação dos insumos necessários para as fases vindouras. Ressalta-se que a formatação prévia dessas bases mitiga consideravelmente o risco de retrabalho futuro, em especial nas etapas de treino e validação dos modelos preditivos. O adiantamento parcial dessas ações frente ao cronograma original provou-se uma tática eficaz para contornar potenciais problemas de indisponibilidade ou baixa qualidade dos dados. Os gargalos enfrentados — notadamente a disparidade estrutural entre os datasets e as restrições de processamento — foram superados por meio de readequações metodológicas e organização progressiva, mantendo o fluxo do projeto inalterado. Para os próximos ciclos, o foco será finalizar a unificação das bases, refinar o balanceamento e concluir a estruturação do dataset para uso em rotinas de treinamento escaláveis e reprodutíveis, elementos cruciais para assegurar a robustez da solução final.",
+  "_salvamento": "20260325_221916",
+  "_arquivo": "formulario_gabriel_saad_mes7.json"
+}
