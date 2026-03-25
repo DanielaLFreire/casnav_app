@@ -1,0 +1,58 @@
+{
+  "bolsista_id": "guilherme",
+  "bolsista_nome": "Guilherme",
+  "numero_termo": "",
+  "mes_execucao_num": 7,
+  "_projeto": "CASNAV DMarSup",
+  "_coordenador": "Leandro Aparecido Simal Moreira",
+  "nome_bolsista": "Guilherme",
+  "periodo_referencia": "01/02/2026 a 28/02/2026",
+  "data_preenchimento": "25/03/2026",
+  "mes_execucao": "Mês 7 do projeto (Mês 7 — Fev/2026)",
+  "responsavel": "Guilherme",
+  "atividade_principal": [
+    "3.1 Incremento do dataset"
+  ],
+  "atividades_secundarias": "Auxilio no desenvolvimento do software de estabilização",
+  "faixa_cronograma": "meses 1-6 (Ago/2025 a Jan/2026)",
+  "conexao_cronograma": "O objetivo central desta fase é a consolidação de um dataset de imagens robusto, que servirá de base para o treinamento dos algoritmos de visão computacional. Ao realizar o incremento do banco de dados com novas capturas de embarcações e classes de superfície, a atividade garante que os marcos subsequentes de validação de dados hidrodinâmicos e estruturação do sistema tenham insumos de alta qualidade. Portanto, o progresso aqui detalhado é o que viabiliza a entrega do primeiro dataset consolidado previsto no cronograma global.",
+  "status_atividade": [
+    "adiantada em relação ao cronograma"
+  ],
+  "explicacao_status": "O período foi marcado pela expansão da base de dados através de pesquisas e capturas aéreas com Drone. Esta abordagem permitiu diversificar os ângulos e cenários das embarcações, resultando em um dataset rotulado mais completo e robusto. O trabalho de classificação das diferentes classes de superfície segue em conformidade com o planejado para a Fase 1.",
+  "resumo_executivo": "Neste período, o foco principal foi o avanço da Atividade 7, referente ao incremento e rotulagem do dataset de embarcações de superfície. Através de um esforço híbrido de coleta, que uniu pesquisas técnicas a novos registros de imagens aéreas via Drone, foi possível ampliar significativamente a diversidade de ângulos e classes de dados. Este progresso é fundamental para a Fase 1 (Estruturação e Modelagem), pois garante que o treinamento dos modelos de visão computacional seja baseado em um banco de dados robusto e variado. As atividades seguem rigorosamente o cronograma estabelecido, com foco na consolidação final do primeiro dataset rotulado.",
+  "atividades": [
+    {
+      "codigo": "3.1",
+      "nome": "3.1 Incremento do dataset",
+      "situacao": "Em andamento",
+      "estagio": [
+        "implementação"
+      ],
+      "objetivo": "Expandir a base de dados de imagens e vídeos de embarcações de superfície, visando aumentar a precisão e a confiabilidade dos algoritmos de detecção na Fase 1 do projeto.",
+      "descricao": "Realização de coleta de dados por meio de pesquisas específicas. O processo inclui o tratamento, organização e a rotulagem manual de novas classes de embarcações, consolidando um dataset completo para fins de modelagem e validação.",
+      "realizado": "Coleta de novos conjuntos de imagens aéreas , triagem de dados externos e início da unificação das bases. Foi estabelecida a padronização dos formatos de anotação e iniciada a harmonização semântica das classes de embarcações para garantir que o dataset unificado seja compatível com os objetivos do projeto.",
+      "falta": "Concluir a unificação completa das bases, aplicar técnicas de data augmentation para mitigar desbalanceamentos e gerar o arquivo data.yaml na partição YOLO. Falta também a elaboração do relatório de desbalanceamento (Gini) e o draft da documentação científica.",
+      "pct_periodo": 90,
+      "pct_acum": 80,
+      "dificuldades": "O principal desafio reside na harmonização de classes entre datasets de origens distintas e na manutenção da consistência semântica durante a rotulagem, fundamental para evitar vieses nos experimentos de EXP-G que serão realizados na base unificada",
+      "previsao": "Abril/2026",
+      "marco": "Consolidação definitiva do dataset unificado com padronização de anotações e harmonização de classes de embarcações."
+    }
+  ],
+  "prox_atividades": "Aplicação de técnicas de balanceamento de dados; implementação de rotinas de validação de integridade; particionamento do dataset (treino/validação/teste) e início dos experimentos na base unificada.",
+  "prox_previsao": "Abril/2026",
+  "prox_entregaveis": "Base de dados consolidada e acompanhada do arquivo de configuração data.yaml. Diagnóstico estatístico de distribuição das classes (Métrica de Gini). Relatório consolidado dos primeiros experimentos e rascunho da documentação científica.",
+  "prox_risco": "Não",
+  "prox_risco_explicacao": "",
+  "prox_mitigacao": "",
+  "dif_tecnicas": "Sim",
+  "dif_tecnicas_quais": "As principais dificuldades foram de ordem técnico-metodológica, focadas na harmonização semântica das classes de embarcações provenientes de fontes distintas (pesquisas vs. Drone). Houve um desafio em padronizar os formatos de anotação e garantir que as técnicas de data augmentation não gerassem vieses, exigindo um refinamento rigoroso no balanceamento do dataset unificado.",
+  "dif_ajuste": "Sim",
+  "dif_apoio": "Sim",
+  "dif_infra": "Não",
+  "dif_infra_detalhe": "",
+  "consideracoes_finais": "O período foi marcado por avanços significativos na estruturação de um banco de dados robusto e padronizado. A integração de imagens aéreas capturadas por Drone trouxe um diferencial qualitativo essencial para a diversidade de ângulos das embarcações, fortalecendo a base que sustentará os modelos de visão computacional da Fase 1.\n\nApesar das complexidades inerentes à unificação de múltiplas bases de dados, as atividades seguem rigorosamente o cronograma previsto. Com o dataset unificado e o pipeline de anotação validado, o projeto encontra-se em estágio maduro para o início dos experimentos de treinamento e análise de desbalanceamento, mantendo a previsão de entrega conforme o planejamento global.",
+  "_salvamento": "20260325_174152",
+  "_arquivo": "formulario_guilherme_mes7.json"
+}
