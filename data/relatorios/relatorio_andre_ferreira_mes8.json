@@ -1,0 +1,15 @@
+{
+  "bolsista_id": "andre_ferreira",
+  "bolsista_nome": "André Ferreira",
+  "numero_termo": "",
+  "periodo": "",
+  "mes_referencia_num": 8,
+  "bloco1_tecnico": "## BLOCO 1 — RELATÓRIO TÉCNICO\n\n**Projeto:** CASNAV DMarSup — Projeto Sistemas Marítimos Não Tripulados\n**Coordenador:** Leandro Aparecido Simal Moreira\n**Bolsista:** André Ferreira | **Termo:** \n**Período:**  | **Mês 8 do projeto (Mês 8 — Mar/2026)**\n**Atividade(s) principal(is):** \n\n### 1. Enquadramento\n\n\nStatus: \n\n\n### 2. Atividades\n\nNenhuma atividade concluída integralmente no período.\n\n#### Atividades Não Iniciadas\n- 3.1 Incremento do dataset\n\n### 3. Estimativa de Conclusão\nRiscos: \nMitigação: \n\n### 4. Próximas Atividades\n\nEntregáveis: \n\n### 5. Considerações Finais\n\n",
+  "bloco2_gantt": "## BLOCO 2 — SÍNTESE GERENCIAL PARA GANTT\n\n| Campo | Valor |\n|-------|-------|\n| Atividade | — |\n| Código | — |\n| Status | — |\n| Início planejado | — |\n| Início real | — |\n| Término planejado | — |\n| Término atualizado | — |\n| Tipo desvio | — |\n| Impacto | — |\n| Dependências | — |\n| Marco | — |\n| Comentário | — |\n",
+  "bloco3_curva_s": "## BLOCO 3 — SÍNTESE FÍSICA PARA CURVA S\n\n| Indicador | Valor |\n|-----------|-------|\n| Entregas concluídas | Nenhuma |\n| Entregas parciais | — |\n| % avanço período | 0% |\n| % avanço acumulado | 0% |\n\n**Justificativa:** —\n**Contribuíram:** —\n**Riscos:** —\n**Aceleradores:** —\n",
+  "bloco4_resumo": "## BLOCO 4 — RESUMO EXECUTIVO\n\n\n",
+  "tipo": "individual",
+  "gerado_em": "2026-03-25T11:22:43.042657",
+  "_salvamento": "20260325_112243",
+  "_arquivo": "relatorio_andre_ferreira_mes8.json"
+}
