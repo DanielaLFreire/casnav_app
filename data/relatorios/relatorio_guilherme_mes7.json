@@ -9,7 +9,7 @@
   "bloco3_curva_s": "## BLOCO 3 — SÍNTESE FÍSICA PARA CURVA S\n\n| Indicador | Valor |\n|-----------|-------|\n| Entregas concluídas | Nenhuma |\n| Entregas parciais | — |\n| % avanço período | 0% |\n| % avanço acumulado | 0% |\n\n**Justificativa:** —\n**Contribuíram:** —\n**Riscos:** —\n**Aceleradores:** —\n",
   "bloco4_resumo": "## BLOCO 4 — RESUMO EXECUTIVO\n\nNeste período, o foco principal foi o avanço da Atividade 7, referente ao incremento e rotulagem do dataset de embarcações de superfície. Através de um esforço híbrido de coleta, que uniu pesquisas técnicas a novos registros de imagens aéreas via Drone, foi possível ampliar significativamente a diversidade de ângulos e classes de dados. Este progresso é fundamental para a Fase 1 (Estruturação e Modelagem), pois garante que o treinamento dos modelos de visão computacional seja baseado em um banco de dados robusto e variado. As atividades seguem rigorosamente o cronograma estabelecido, com foco na consolidação final do primeiro dataset rotulado.\n",
   "tipo": "individual",
-  "gerado_em": "2026-03-26T13:58:39.148829",
-  "_salvamento": "20260326_135839",
+  "gerado_em": "2026-03-26T13:59:10.878547",
+  "_salvamento": "20260326_135910",
   "_arquivo": "relatorio_guilherme_mes7.json"
 }
