@@ -9,7 +9,7 @@
   "bloco3_curva_s": "## BLOCO 3 — SÍNTESE FÍSICA PARA CURVA S\n\n| Indicador | Valor |\n|-----------|-------|\n| Entregas concluídas | Nenhuma |\n| Entregas parciais | — |\n| % avanço período | 0% |\n| % avanço acumulado | 0% |\n\n**Justificativa:** —\n**Contribuíram:** —\n**Riscos:** —\n**Aceleradores:** —\n",
   "bloco4_resumo": "## BLOCO 4 — RESUMO EXECUTIVO\n\nNo período avaliado, o avanço técnico concentrou-se na estruturação de bases de dados e parâmetros para a modelagem do sistema. A equipe atuou na estimativa e organização de coeficientes hidrodinâmicos e inerciais para o gêmeo digital, utilizando literatura naval e dados hidrostáticos. Simultaneamente, impulsionou-se a frente de visão computacional por meio de duas frentes: a harmonização de datasets públicos (tratamento de labels e padronização) e o desenvolvimento de um software de estabilização de câmera. Esta última ferramenta é vital para garantir que os frames capturados possuam a estabilidade necessária para não comprometer a acurácia dos algoritmos de detecção. De modo geral, o período consolida insumos essenciais, com entregas parciais robustas que preparam o terreno para as etapas de modelagem, data augmentation e treinamento das redes neurais.\n",
   "tipo": "individual",
-  "gerado_em": "2026-03-26T13:58:38.325458",
-  "_salvamento": "20260326_135838",
+  "gerado_em": "2026-03-26T13:59:10.085454",
+  "_salvamento": "20260326_135910",
   "_arquivo": "relatorio_gabriel_saad_mes7.json"
 }
