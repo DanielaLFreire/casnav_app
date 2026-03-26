@@ -9,7 +9,7 @@
   "bloco3_curva_s": "## BLOCO 3 — SÍNTESE FÍSICA PARA CURVA S\n\n| Indicador | Valor |\n|-----------|-------|\n| Entregas concluídas | Nenhuma |\n| Entregas parciais | — |\n| % avanço período | 0% |\n| % avanço acumulado | 0% |\n\n**Justificativa:** —\n**Contribuíram:** —\n**Riscos:** —\n**Aceleradores:** —\n",
   "bloco4_resumo": "## BLOCO 4 — RESUMO EXECUTIVO\n\nNo período avaliado, as atividades estiveram concentradas no levantamento e organização de dados hidrodinâmicos do drone, alinhadas à Atividade 1.1 do cronograma (meses 1 a 6). Paralelamente, iniciou-se de forma antecipada a construção de rótulos e a consolidação de datasets públicos de embarcações, preparando o terreno para a Atividade 1.2.\nO colaborador atuou ativamente no suporte à pesquisa de conjuntos de dados e foi o primeiro a iniciar a rotulagem de imagens, mantendo foco contínuo nessa tarefa. Essas ações, embora parcialmente adiantadas em relação ao cronograma original, possuem caráter preparatório e estratégico, visando reduzir riscos relacionados à qualidade, padronização e disponibilidade dos dados.\nDe modo geral, o período foi marcado por avanços consistentes e proativos, com todas as atividades executadas dentro da fase originalmente prevista. Os desvios observados são positivos, pois fortalecem a base técnica do projeto e otimizam o início das etapas subsequentes de modelagem e treinamento, sem comprometer o cronograma global.\n",
   "tipo": "individual",
-  "gerado_em": "2026-03-26T13:58:39.934037",
-  "_salvamento": "20260326_135839",
+  "gerado_em": "2026-03-26T13:59:11.735595",
+  "_salvamento": "20260326_135911",
   "_arquivo": "relatorio_victor_mes7.json"
 }
