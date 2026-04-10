@@ -278,6 +278,42 @@
       "prazo_meses": 30,
       "atividades_designadas": [
         {
+          "codigo": "1.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        },
+        {
+          "codigo": "1.2",
+          "periodicidade": "Mês 7 ao Mês 18",
+          "meses_inicio": 7,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "1.5",
+          "periodicidade": "Mês 25 ao Mês 30",
+          "meses_inicio": 25,
+          "meses_fim": 30
+        },
+        {
+          "codigo": "2.2",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "2.3",
+          "periodicidade": "Mês 19 ao Mês 24",
+          "meses_inicio": 19,
+          "meses_fim": 24
+        },
+        {
+          "codigo": "2.5",
+          "periodicidade": "Mês 31 ao Mês 36",
+          "meses_inicio": 31,
+          "meses_fim": 36
+        },
+        {
           "codigo": "3.1",
           "periodicidade": "Mês 1 ao Mês 6",
           "meses_inicio": 1,
@@ -290,6 +326,18 @@
           "meses_fim": 12
         },
         {
+          "codigo": "3.3",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "3.4",
+          "periodicidade": "Mês 13 ao Mês 24",
+          "meses_inicio": 13,
+          "meses_fim": 24
+        },
+        {
           "codigo": "3.5",
           "periodicidade": "Mês 19 ao Mês 24",
           "meses_inicio": 19,
@@ -300,18 +348,6 @@
           "periodicidade": "Mês 31 ao Mês 36",
           "meses_inicio": 31,
           "meses_fim": 36
-        },
-        {
-          "codigo": "3.3",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "3.4",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
         }
       ],
       "observacoes": "Atividades: 1.1, 1.2, 1.5, 2.2, 2.3, 2.5, 3.1, 3.2, 3.3, 3.4, 3.5, 3.7."
