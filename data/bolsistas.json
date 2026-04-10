@@ -44,6 +44,24 @@
       "prazo_meses": 28,
       "atividades_designadas": [
         {
+          "codigo": "2.2",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "2.3",
+          "periodicidade": "Mês 19 ao Mês 24",
+          "meses_inicio": 19,
+          "meses_fim": 24
+        },
+        {
+          "codigo": "2.5",
+          "periodicidade": "Mês 31 ao Mês 36",
+          "meses_inicio": 31,
+          "meses_fim": 36
+        },
+        {
           "codigo": "3.1",
           "periodicidade": "Mês 1 ao Mês 6",
           "meses_inicio": 1,
