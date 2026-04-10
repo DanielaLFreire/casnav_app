@@ -218,6 +218,12 @@
           "periodicidade": "Mês 25 ao Mês 30",
           "meses_inicio": 25,
           "meses_fim": 30
+        },
+        {
+          "codigo": "3.7",
+          "periodicidade": "Mês 31 ao Mês 36",
+          "meses_inicio": 31,
+          "meses_fim": 36
         }
       ],
       "observacoes": "Ingressou no mês 4 do projeto (novembro/2025). Dados extraídos do Termo de Concessão de Bolsa nº 66/2025."
