@@ -1,0 +1,85 @@
+{
+  "bolsista_id": "dannylo_mauricio",
+  "bolsista_nome": "Dannylo C. Maurício",
+  "numero_termo": "N/A",
+  "mes_execucao_num": 8,
+  "_projeto": "CASNAV DMarSup",
+  "_coordenador": "Leandro Aparecido Simal Moreira",
+  "nome_bolsista": "Dannylo C. Maurício",
+  "periodo_referencia": "01/03/2026 a 31/03/2026",
+  "data_preenchimento": "25/03/2026",
+  "mes_execucao": "Mês 8 do projeto (Mês 8 — Mar/2026)",
+  "responsavel": "Dannylo C. Maurício",
+  "atividade_principal": [
+    "3.1 Incremento do dataset"
+  ],
+  "atividades_secundarias": "1 - Análise de Composição do Dataset\n2 - Avaliação de Dataset adicional para concatenação",
+  "faixa_cronograma": "meses 1-6 (Ago/2025 a Jan/2026)",
+  "conexao_cronograma": "1 identifica pontos de melhoria como desbalanceamento de classes e tamanhos de anotação e outros.\n2 serev para a possibilidade de incrementar o dataset com embarcações de tamanho maior, um problema encontrado em 1",
+  "status_atividade": [
+    "dentro da fase originalmente prevista"
+  ],
+  "explicacao_status": "As atividades estão em dia.",
+  "resumo_executivo": "As últimas atividades foram voltadas para a melhoria do dataset atual (CITRA-3D), identificando pontos cegos e traçando linhas de ação para aprimoramento. Aprimoramentos previstos foram: inclusão de embarcações maiores por meio de um dataset de web scraping, aumento do número de imagens e anotações, reorganização das classes e balanceamento de classes e tamanhos de embarcações.",
+  "atividades": [
+    {
+      "codigo": "3.1",
+      "nome": "3.1 Incremento do dataset",
+      "situacao": "Em andamento",
+      "estagio": [
+        "planejamento"
+      ],
+      "objetivo": "Identificar pontos de melhoria no dataset CITRA-3D.",
+      "descricao": "Análise de distribuição de metadados de anotações.",
+      "realizado": "- Análise de distribuição de classes: classe TUG com muitas anotações, outras classes com menos\n- Identificação de classe fantasma: classe navio deve ser removida do dataset e remapeada nas outras classes\n- Viés regional: o dataset é focado em imagens da Baía de Guanabara e suas particularidades atmosféricas e de tráfego marítimo, trazendo viés para o modelo\n- Há muitas anotações pequenas e em imagens advindas de câmeras da malha do CITRA, induzindo o modelo a vieses.",
+      "falta": "Integração de Dataset de WEB Scraping.",
+      "pct_periodo": 85,
+      "pct_acum": 85,
+      "dificuldades": "Comunicação com os demais membros: todas as minhas atividades são, em parte, realizadas por outros membros que iniciaram sem a comunicação prévia a mim. Desta forma, há o risco de retrabalho.",
+      "previsao": "04/2026",
+      "marco": "União de Datasets CITRA-3D e WEB"
+    },
+    {
+      "codigo": "3.3",
+      "nome": "3.3 Pesquisa em modelos de redes neurais",
+      "situacao": "Em andamento",
+      "estagio": [
+        "planejamento"
+      ],
+      "objetivo": "Identificar melhorias na atual rede neural utilizada para detecções de embarcações.",
+      "descricao": "Pesquisa sobre arquiteturas de rede neural otimizadas para operação em hardware de dispositivos de ponta.",
+      "realizado": "- Pesquisa sobre backbones adaptados para operação em tempo real ou quasi-real: O uso de backbones baseados em GhostNet ou GhostNetV2 com Bottlenecks e camadas de convolução otimizadas pode reduzir o tempo de inferência, treinamento e adaptar o modelo para hardware inferior como o de um drone.\n- Reconstrução de Backbone que substitui camadas de pooling por transformações com Haar Wavelets: A reconstrução foi  bem sucedida e o backbone pode ser integrado a necks e heads de outros modelos.\n",
+      "falta": "Implementação de backbone baseado em GhostNetV2",
+      "pct_periodo": 60,
+      "pct_acum": 60,
+      "dificuldades": "Definição clara do objetivo da etapa:\n- o que deve ser feito?\n-  qual é o progresso? O que já foi feito nesta tarefa?\n- quais são as regras de negócio? O modelo operará em servidor ou no hardware do drone? etc",
+      "previsao": "05/2026",
+      "marco": "Compreensão da Arquitetura selecionada para backbone, neck e head da rede neural para posterior otimização com ghostnet"
+    },
+    {
+      "codigo": "3.5",
+      "nome": "3.5 Módulo de visão computacional especializado",
+      "situacao": "Não Iniciada"
+    },
+    {
+      "codigo": "3.6",
+      "nome": "3.6 Estimativa de localização de embarcações de superfície",
+      "situacao": "Não Iniciada"
+    }
+  ],
+  "prox_atividades": "Integração do dataset WEB ao CITRA-3D\nOtimização do novo modelo com GhostNet",
+  "prox_previsao": "04/2026",
+  "prox_entregaveis": "Dataset CITRA-3D-WEB\nModelo com backbone otimizado por GhostNet",
+  "prox_risco": "Sim",
+  "prox_risco_explicacao": "",
+  "prox_mitigacao": "",
+  "dif_tecnicas": "Não",
+  "dif_tecnicas_quais": "",
+  "dif_ajuste": "Não",
+  "dif_apoio": "Sim",
+  "dif_infra": "Sim",
+  "dif_infra_detalhe": "Definição de Escopo de Atividades, compartilhamento de informação e decisões de projeto para guiar a pesquisa e desenvolvimento.",
+  "consideracoes_finais": "N/A",
+  "_salvamento": "20260326_152118",
+  "_arquivo": "formulario_dannylo_mauricio_mes8.json"
+}
