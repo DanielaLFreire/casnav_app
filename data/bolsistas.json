@@ -10,7 +10,26 @@
       "data_inicio_bolsa": "2025-11-01",
       "valor_mensal": 0,
       "prazo_meses": 28,
-      "atividades_designadas": [],
+      "atividades_designadas": [
+        {
+          "codigo": "1.1",
+          "periodicidade": "Mês 1 ao Mês 6",
+          "meses_inicio": 1,
+          "meses_fim": 6
+        },
+        {
+          "codigo": "1.2",
+          "periodicidade": "Mês 7 ao Mês 18",
+          "meses_inicio": 7,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "1.5",
+          "periodicidade": "Mês 25 ao Mês 30",
+          "meses_inicio": 25,
+          "meses_fim": 30
+        }
+      ],
       "observacoes": "Atividades: 1.1, 1.2 e 1.5."
     },
     {
