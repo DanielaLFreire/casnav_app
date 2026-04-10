@@ -944,7 +944,7 @@ def page_bolsistas():
                 ativs_opcoes = [f"{a['codigo']} {a['nome']}" for a in proj["atividades"]]
                 ativs_atuais = [a["codigo"] for a in b.get("atividades_designadas", [])]
                 ativs_sel = st.multiselect("Atividades designadas", ativs_opcoes,
-                    default=[o for o in ativs_opcoes if any(o.startswith(c) for c in ativs_atuais)], key=f"ba{i}")
+                    default=[o for o in ativs_opcoes if any(o.startswith(c + " ") for c in ativs_atuais)], key=f"ba{i}")
 
                 if st.form_submit_button("💾 Salvar"):
                     new_ativs = []
