@@ -5,20 +5,13 @@
       "nome": "Victor",
       "nome_completo": "Victor",
       "numero_termo": "65/2025",
-      "email": "",
-      "formacao": "",
+      "email": "victogalhardo@gmail.com",
+      "formacao": "Mestrado em Montagem Industrial",
       "data_inicio_bolsa": "2025-08-01",
       "valor_mensal": 0,
-      "prazo_meses": 0,
-      "atividades_designadas": [
-        {
-          "codigo": "3.1",
-          "periodicidade": "Mês 1 ao Mês 6",
-          "meses_inicio": 1,
-          "meses_fim": 6
-        }
-      ],
-      "observacoes": "Dados completos a serem preenchidos"
+      "prazo_meses": 28,
+      "atividades_designadas": [],
+      "observacoes": ""
     },
     {
       "id": "guilherme",
