@@ -68,22 +68,15 @@
     {
       "id": "andre_ferreira",
       "nome": "André Ferreira",
-      "nome_completo": "André Ferreira",
-      "numero_termo": "",
-      "email": "",
-      "formacao": "",
-      "data_inicio_bolsa": "2025-08-01",
+      "nome_completo": "ANDRÉ LUIZ DE SOUZA FERREIRA",
+      "numero_termo": "54/2025",
+      "email": "andrelsferreiras@gmail.com",
+      "formacao": "Mestrando em Computação",
+      "data_inicio_bolsa": "2025-10-01",
       "valor_mensal": 0,
-      "prazo_meses": 0,
-      "atividades_designadas": [
-        {
-          "codigo": "3.1",
-          "periodicidade": "Mês 1 ao Mês 6",
-          "meses_inicio": 1,
-          "meses_fim": 6
-        }
-      ],
-      "observacoes": "Dados completos a serem preenchidos"
+      "prazo_meses": 30,
+      "atividades_designadas": [],
+      "observacoes": "Atividades: 1.1, 1.2, 1.5, 2.2, 2.3, 2.5."
     },
     {
       "id": "daniela_freire",
