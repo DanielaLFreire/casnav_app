@@ -6,13 +6,15 @@ Mês 1 do Projeto = Agosto/2025
 Página: Formulário de Atividades
 - Permite selecionar bolsista e mês (padrão = mês atual)
 - Se existir formulário salvo para bolsista+mês → exibe relatório gerado
-- Se não existir → exibe formulário para preenchimento
+- Se não existir → exibe formulário LIMPO para preenchimento
+  (pré-preenchido APENAS com dados do perfil do bolsista e do projeto)
 """
 
 import streamlit as st
 from config import (SITUACAO_OPTS, EST_OPTS, mes_atual, hoje,
                     periodo_referencia_auto, render_sidebar, mes_label, mes_label_curto)
 from functions_aux import (load_bolsistas, load_projeto, salvar_formulario,
+                           salvar_relatorio,
                            get_ultimo_formulario, calcular_atividades_do_periodo,
                            calcular_faixa_planejada, prefill_gantt_inicio_plan,
                            prefill_gantt_termino_plan, get_formularios_bolsista)
@@ -58,30 +60,22 @@ def exibir_relatorio_salvo(form_salvo: dict, proj: dict, bolsista: dict, mes_ref
 
 
 # ═══════════════════════════════════════════════════
-#  FORMULÁRIO DE PREENCHIMENTO
+#  FORMULÁRIO DE PREENCHIMENTO (campos limpos)
 # ═══════════════════════════════════════════════════
 def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
-    """Exibe o formulário completo para preenchimento."""
+    """Exibe o formulário completo para preenchimento.
+    Campos LIMPOS, exceto os derivados do perfil do bolsista ou do projeto."""
 
     # ── Dados auxiliares ──
     atividades = proj["atividades"]
     ativs_desig = bolsista.get("atividades_designadas", [])
     ativs_opcoes = [f"{a['codigo']} {a['nome']}" for a in atividades]
 
-    # Buscar atividades padrão do período
+    # Buscar atividades padrão do período (do projeto, não do último form)
     ativs_do_periodo = calcular_atividades_do_periodo(bolsista, mes_ref, proj)
     ativs_default = [f"{a['codigo']} {a['nome']}" for a in ativs_do_periodo]
 
-    # Buscar dados do formulário anterior para herança
-    ultimo = get_ultimo_formulario(bolsista["id"])
-
-    def h(campo, fallback=""):
-        """Herda campo do último formulário."""
-        if ultimo:
-            return ultimo.get(campo, fallback)
-        return fallback
-
-    # Buscar dados completos de cada atividade designada
+    # Buscar dados completos de cada atividade designada (do projeto)
     ativs_info = []
     for ad in ativs_desig:
         cod = ad["codigo"]
@@ -95,19 +89,19 @@ def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
                 break
         ativs_info.append(info)
 
-    # Herdar dados de atividades do último formulário
-    def ha(idx, campo, fallback=""):
-        """Herda campo da atividade idx do último formulário."""
-        if ultimo:
-            ativs_ant = ultimo.get("atividades", [])
-            if idx < len(ativs_ant):
-                return ativs_ant[idx].get(campo, fallback)
-        return fallback
+    # Info de pré-preenchimento
+    pre_info = []
+    pre_info.append("**Nome, coordenador, termo, data** ← cadastro do bolsista")
+    pre_info.append(f"**Mês {mes_ref}** = {mes_label_curto(mes_ref)}, período = {periodo_referencia_auto(mes_ref)}")
+    if ativs_default:
+        pre_info.append(f"**Atividades sugeridas:** {', '.join(ativs_default)}")
+    pre_info.append("**Demais campos em branco** — preencha com os dados do período atual.")
+    st.markdown('<div class="prefill-info">' + "<br>".join(pre_info) + '</div>', unsafe_allow_html=True)
 
     # ── Formulário ──
     with st.form("form_atividades", clear_on_submit=False):
 
-        # ═══ SEÇÃO 1: IDENTIFICAÇÃO ═══
+        # ═══ SEÇÃO 1: IDENTIFICAÇÃO (pré-preenchido do perfil/projeto) ═══
         st.markdown("### 1. Identificação")
         f_nome        = st.text_input("Nome do bolsista", value=bolsista["nome"], disabled=True,
                                        help="Preenchido automaticamente a partir do cadastro.")
@@ -129,43 +123,39 @@ def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
 
         st.markdown("---")
 
-        # ═══ SEÇÃO 2: ENQUADRAMENTO ═══
+        # ═══ SEÇÃO 2: ENQUADRAMENTO (atividades e faixa do projeto; resto limpo) ═══
         st.markdown("### 2. Enquadramento no Cronograma")
         _ativ_default_safe = [v for v in ativs_default if v in ativs_opcoes]
         f_ativ_princ = st.multiselect("2.1 Atividade(s) principal(is) do período", ativs_opcoes,
                                        default=_ativ_default_safe,
                                        help="Selecione as atividades do cronograma em que trabalhou neste período.")
-        f_ativ_sec   = st.text_area("2.2 Atividades secundárias", value=h("atividades_secundarias"), height=80,
+        f_ativ_sec   = st.text_area("2.2 Atividades secundárias", value="", height=80,
                                      help="Atividades de apoio realizadas no período.")
         f_faixa      = st.text_input("2.3 Faixa planejada no cronograma original",
                                       value=calcular_faixa_planejada(bolsista, mes_ref),
                                       help="Faixa de meses prevista no cronograma original.")
         f_conexao    = st.text_area("2.4 Conexão com o cronograma global (4-8 linhas)",
-                                     value=h("conexao_cronograma"), height=120,
+                                     value="", height=120,
                                      help="Explique como as atividades se conectam ao cronograma macro do projeto.")
         _status_opts = [
             "dentro da fase originalmente prevista", "adiantada em relação ao cronograma",
             "atrasada em relação ao cronograma", "executada parcialmente fora da faixa originalmente prevista"
         ]
-        _status_default = [v for v in h("status_atividade", []) if v in _status_opts]
         f_status     = st.multiselect("2.5 Status da atividade no período", _status_opts,
-                                       default=_status_default,
+                                       default=[],
                                        help="Selecione um ou mais status que descrevam a situação das atividades.")
-        f_expl_status = st.text_area("Explique:", value=h("explicacao_status"), height=80)
+        f_expl_status = st.text_area("Explique:", value="", height=80)
 
         st.markdown("---")
 
-        # ═══ SEÇÃO 3: RESUMO EXECUTIVO ═══
+        # ═══ SEÇÃO 3: RESUMO EXECUTIVO (limpo) ═══
         st.markdown("### 3. Resumo Executivo do Período")
-        f_resumo = st.text_area(
-            "5 a 10 linhas", value=h("resumo_executivo"), height=150,
-            help="Descreva a etapa focal, principais ações realizadas, entregas relevantes, "
-                 "estágio atual e impacto na próxima etapa. Este texto será usado no Bloco 4 do relatório."
-        )
+        f_resumo = st.text_area("5 a 10 linhas", value="", height=150,
+                                 help="Síntese das atividades, entregas e avanços do período.")
 
         st.markdown("---")
 
-        # ═══ SEÇÃO 4: ATIVIDADES DESIGNADAS ═══
+        # ═══ SEÇÃO 4: ATIVIDADES DESIGNADAS (dinâmicas por situação) ═══
         st.markdown("### 4. Atividades Designadas")
         ativs_form = []
 
@@ -173,167 +163,122 @@ def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
             st.warning("⚠️ Nenhuma atividade designada para este bolsista. Configure em 👥 Gestão de Bolsistas.")
         else:
             for idx, ai in enumerate(ativs_info):
+                st.markdown(f"#### {ai['nome']}")
+                st.caption(f"Periodicidade: meses {ai['meses_inicio']}–{ai['meses_fim']}")
+                if ai.get("descricao_projeto"):
+                    st.caption(f"Descrição no projeto: {ai['descricao_projeto']}")
+
                 ss_key = f"sit_{bolsista['id']}_{idx}"
                 situacao = st.session_state.get(ss_key, "Não Iniciada")
 
-                st.markdown(f"#### {ai['nome']}")
-                st.caption(f"Situação: **{situacao}** | {ai.get('periodicidade','')}")
-
                 ativ_data = {"codigo": ai["codigo"], "nome": ai["nome"], "situacao": situacao}
 
-                if situacao == "Concluída":
-                    ativ_data["objetivo"]  = st.text_area(
-                        f"Objetivo ({ai['codigo']})", value=ha(idx, "objetivo"), height=68, key=f"obj_{idx}",
-                        help="Descreva o objetivo principal desta atividade no contexto do projeto."
-                    )
+                if situacao == "Em andamento":
+                    ativ_data["objetivo"] = st.text_area(
+                        f"Objetivo ({ai['codigo']})", value="", height=80, key=f"obj_{idx}",
+                        help="Objetivo desta etapa da atividade.")
                     ativ_data["descricao"] = st.text_area(
-                        f"Descrição ({ai['codigo']})", value=ha(idx, "descricao"), height=80, key=f"desc_{idx}",
-                        help="Descrição técnica detalhada do que foi realizado, métodos e ferramentas utilizados."
-                    )
-                    ativ_data["entregas"]  = st.text_area(
-                        f"Entregas ({ai['codigo']})", value=ha(idx, "entregas"), height=68, key=f"ent_{idx}",
-                        help="Liste os produtos/entregas concretas geradas (datasets, scripts, modelos, relatórios, etc.)."
-                    )
-                    ativ_data["pct_acum"]  = st.slider(
-                        f"% acumulado ({ai['codigo']})", 0, 100, int(ha(idx, "pct_acum", 100)), key=f"pct_{idx}",
-                        help="Percentual real de execução acumulada da atividade. 100% = totalmente concluída."
-                    )
-                    ativ_data["marco"]     = st.text_input(
-                        f"Marco ({ai['codigo']})", value=ha(idx, "marco"), key=f"mar_{idx}",
-                        help="Marco principal associado à conclusão desta atividade (ex.: dataset entregue, modelo validado)."
-                    )
-                    ativ_data["obs"]       = st.text_area(
-                        f"Observações ({ai['codigo']})", value=ha(idx, "obs"), height=68, key=f"obs_{idx}",
-                        help="Observação gerencial sobre prazo, qualidade, dependências ou impacto na próxima etapa."
-                    )
+                        f"Descrição técnica ({ai['codigo']})", value="", height=120, key=f"desc_{idx}",
+                        help="Descrição técnica detalhada do que está sendo realizado.")
 
-                elif situacao == "Em andamento":
-                    _est_default = [v for v in ha(idx, "estagio", []) if v in EST_OPTS]
-                    ativ_data["estagio"]     = st.multiselect(
-                        f"Estágio ({ai['codigo']})", EST_OPTS, default=_est_default, key=f"est_{idx}",
-                        help="Selecione o(s) estágio(s) atual(is): planejamento, preparação de dados, implementação, treinamento, testes, validação, etc."
-                    )
-                    ativ_data["objetivo"]    = st.text_area(
-                        f"Objetivo ({ai['codigo']})", value=ha(idx, "objetivo"), height=68, key=f"obj_{idx}",
-                        help="Descreva o objetivo principal desta atividade no contexto do projeto."
-                    )
-                    ativ_data["descricao"]   = st.text_area(
-                        f"Descrição ({ai['codigo']})", value=ha(idx, "descricao"), height=80, key=f"desc_{idx}",
-                        help="Descrição técnica do que está sendo realizado nesta atividade."
-                    )
-                    ativ_data["realizado"]   = st.text_area(
-                        f"O que foi realizado ({ai['codigo']})", value=ha(idx, "realizado"), height=80, key=f"real_{idx}",
-                        help="Descreva concretamente o que foi feito até agora (entregas parciais, experimentos, análises)."
-                    )
-                    ativ_data["falta"]       = st.text_area(
-                        f"O que falta ({ai['codigo']})", value=ha(idx, "falta"), height=68, key=f"falta_{idx}",
-                        help="O que ainda precisa ser feito para concluir esta atividade."
-                    )
+                    est_opts_safe = EST_OPTS
+                    ativ_data["estagio"] = st.multiselect(
+                        f"Estágio atual ({ai['codigo']})", est_opts_safe, default=[], key=f"est_{idx}",
+                        help="Selecione os estágios em que a atividade se encontra.")
+
+                    ativ_data["realizado"] = st.text_area(
+                        f"O que já foi realizado ({ai['codigo']})", value="", height=80, key=f"real_{idx}")
+                    ativ_data["falta"] = st.text_area(
+                        f"O que falta ({ai['codigo']})", value="", height=80, key=f"falta_{idx}")
+
                     c1, c2 = st.columns(2)
                     with c1:
                         ativ_data["pct_periodo"] = st.slider(
-                            f"% no período ({ai['codigo']})", 0, 100, int(ha(idx, "pct_periodo", 0)), key=f"pp_{idx}",
-                            help="Percentual de avanço gerado apenas neste período de referência."
-                        )
+                            f"% no período ({ai['codigo']})", 0, 100, 0, key=f"pp_{idx}",
+                            help="Percentual de avanço gerado apenas neste período de referência.")
                     with c2:
-                        ativ_data["pct_acum"]    = st.slider(
-                            f"% acumulado ({ai['codigo']})", 0, 100, int(ha(idx, "pct_acum", 0)), key=f"pa_{idx}",
-                            help="Percentual acumulado total de execução desta atividade desde seu início."
-                        )
-                    ativ_data["dificuldades"]    = st.text_area(
-                        f"Dificuldades ({ai['codigo']})", value=ha(idx, "dificuldades"), height=68, key=f"dif_{idx}",
-                        help="Dificuldades técnicas, limitações ou riscos identificados nesta atividade."
-                    )
-                    ativ_data["previsao"]        = st.text_input(
-                        f"Previsão de conclusão ({ai['codigo']})", value=ha(idx, "previsao"), key=f"prev_{idx}",
-                        help="Data ou mês previsto para conclusão desta atividade."
-                    )
-                    ativ_data["marco"]           = st.text_input(
-                        f"Marco ({ai['codigo']})", value=ha(idx, "marco"), key=f"mar_{idx}",
-                        help="Principal marco esperado para encerrar esta atividade."
-                    )
+                        ativ_data["pct_acum"] = st.slider(
+                            f"% acumulado ({ai['codigo']})", 0, 100, 0, key=f"pa_{idx}",
+                            help="Percentual acumulado total de execução desta atividade desde seu início.")
+
+                    ativ_data["dificuldades"] = st.text_area(
+                        f"Dificuldades ({ai['codigo']})", value="", height=68, key=f"dif_{idx}",
+                        help="Dificuldades técnicas, limitações ou riscos identificados nesta atividade.")
+                    ativ_data["previsao"] = st.text_input(
+                        f"Previsão de conclusão ({ai['codigo']})", value="", key=f"prev_{idx}",
+                        help="Data ou mês previsto para conclusão desta atividade.")
+                    ativ_data["marco"] = st.text_input(
+                        f"Marco ({ai['codigo']})", value="", key=f"mar_{idx}",
+                        help="Principal marco esperado para encerrar esta atividade.")
+
+                elif situacao == "Concluída":
+                    ativ_data["objetivo"] = st.text_area(
+                        f"Objetivo ({ai['codigo']})", value="", height=80, key=f"obj_{idx}")
+                    ativ_data["descricao"] = st.text_area(
+                        f"Descrição técnica ({ai['codigo']})", value="", height=120, key=f"desc_{idx}")
+                    ativ_data["entregas"] = st.text_area(
+                        f"Entregas concretas ({ai['codigo']})", value="", height=80, key=f"entr_{idx}")
+                    ativ_data["pct_acum"] = st.slider(
+                        f"% acumulado ({ai['codigo']})", 0, 100, 100, key=f"pa_{idx}")
+                    ativ_data["marco"] = st.text_input(
+                        f"Marco ({ai['codigo']})", value="", key=f"mar_{idx}")
+                    ativ_data["obs"] = st.text_area(
+                        f"Observação ({ai['codigo']})", value="", height=68, key=f"obs_{idx}")
 
                 elif situacao == "Impedida":
-                    ativ_data["motivo_impedimento"]    = st.text_area(
-                        f"Motivo ({ai['codigo']})", value=ha(idx, "motivo_impedimento"), height=80, key=f"imp_{idx}",
-                        help="Descreva o motivo do impedimento (dependência de outra atividade, falta de infraestrutura, dados indisponíveis, etc.)."
-                    )
-                    ativ_data["previsao_desbloqueio"]  = st.text_input(
-                        f"Previsão de desbloqueio ({ai['codigo']})", value=ha(idx, "previsao_desbloqueio"), key=f"desb_{idx}",
-                        help="Quando se espera que o impedimento seja resolvido."
-                    )
+                    ativ_data["motivo_impedimento"] = st.text_area(
+                        f"Motivo ({ai['codigo']})", value="", height=80, key=f"imp_{idx}",
+                        help="Descreva o motivo do impedimento.")
+                    ativ_data["previsao_desbloqueio"] = st.text_input(
+                        f"Previsão de desbloqueio ({ai['codigo']})", value="", key=f"desb_{idx}",
+                        help="Quando se espera que o impedimento seja resolvido.")
 
                 # Não Iniciada: nenhum campo extra
 
                 ativs_form.append(ativ_data)
                 st.markdown("---")
 
-        # ═══ SEÇÃO 5: PRÓXIMOS PASSOS ═══
+        # ═══ SEÇÃO 5: PRÓXIMOS PASSOS (limpo) ═══
         st.markdown("### 5. Próximos Passos")
-        f_prox_at  = st.text_area(
-            "Atividades previstas", value=h("prox_atividades"), height=80,
-            help="Quais atividades em andamento devem ser concluídas ou iniciadas no próximo período?"
-        )
-        f_prox_pre = st.text_input(
-            "Previsão de início/continuidade", value=h("prox_previsao"),
-            help="Previsão de conclusão para cada atividade listada acima."
-        )
-        f_prox_ent = st.text_area(
-            "Entregáveis esperados", value=h("prox_entregaveis"), height=68,
-            help="Quais entregáveis concretos são esperados até o próximo relatório? (ex.: dataset rotulado, modelo treinado, relatório técnico)"
-        )
-        f_prox_ri  = st.selectbox(
-            "Há riscos identificados?", ["Sim", "Não"],
-            index=0 if h("prox_risco") == "Sim" else 1, key="prox_ri",
-            help="Há risco de não cumprimento dos prazos previstos para o próximo período?"
-        )
-        f_prox_rie = st.text_area(
-            "Explicação do risco:", value=h("prox_risco_explicacao"), height=68,
-            help="Descreva o risco identificado e seu possível impacto no cronograma."
-        ) if f_prox_ri == "Sim" else ""
-        f_prox_mit = st.text_area(
-            "Mitigação:", value=h("prox_mitigacao"), height=68,
-            help="Quais ações estão previstas para mitigar os atrasos ou dificuldades identificados?"
-        ) if f_prox_ri == "Sim" else ""
+        f_prox_at  = st.text_area("Atividades previstas", value="", height=80,
+                                   help="Quais atividades devem ser concluídas ou iniciadas no próximo período?")
+        f_prox_pre = st.text_input("Previsão de início/continuidade", value="",
+                                    help="Previsão de conclusão para cada atividade listada acima.")
+        f_prox_ent = st.text_area("Entregáveis esperados", value="", height=68,
+                                   help="Quais entregáveis concretos são esperados até o próximo relatório?")
+        f_prox_ri  = st.selectbox("Há riscos identificados?", ["Não", "Sim"], key="prox_ri",
+                                   help="Há risco de não cumprimento dos prazos previstos?")
+        f_prox_rie = st.text_area("Explicação do risco:", value="", height=68,
+                                   help="Descreva o risco e seu possível impacto.") if f_prox_ri == "Sim" else ""
+        f_prox_mit = st.text_area("Mitigação:", value="", height=68,
+                                   help="Ações previstas para mitigar.") if f_prox_ri == "Sim" else ""
 
         st.markdown("---")
 
-        # ═══ SEÇÃO 6: DIFICULDADES E SUPORTE ═══
+        # ═══ SEÇÃO 6: DIFICULDADES E SUPORTE (limpo) ═══
         st.markdown("### 6. Dificuldades e Suporte")
         c1, c2 = st.columns(2)
         with c1:
-            f_dt  = st.selectbox(
-                "Dificuldades técnicas?", ["Sim", "Não"], key="dt",
-                help="Houve dificuldades técnicas no período (ex.: ferramentas, algoritmos, dados)?"
-            )
-            f_da  = st.selectbox(
-                "Ajuste metodológico?", ["Sim", "Não"], key="da",
-                help="Houve necessidade de mudar abordagem, método ou estratégia durante o período?"
-            )
+            f_dt  = st.selectbox("Dificuldades técnicas?", ["Não", "Sim"], key="dt",
+                                  help="Houve dificuldades técnicas no período?")
+            f_da  = st.selectbox("Ajuste metodológico?", ["Não", "Sim"], key="da",
+                                  help="Houve necessidade de mudar abordagem?")
         with c2:
-            f_dap = st.selectbox(
-                "Apoio orientador?", ["Sim", "Não"], key="dap",
-                help="Houve necessidade de apoio do orientador/coordenador ou da equipe técnica?"
-            )
-            f_di  = st.selectbox(
-                "Necessidade infraestrutura?", ["Sim", "Não"], key="di",
-                help="Há necessidade atual de infraestrutura, dados, validação, equipamento ou decisão gerencial?"
-            )
-        f_dtq = st.text_area(
-            "Quais dificuldades?", value=h("dif_tecnicas_quais"), height=68,
-            help="Descreva as dificuldades técnicas encontradas e como afetaram o andamento das atividades."
-        ) if f_dt == "Sim" else ""
-        f_did = st.text_area(
-            "Detalhe necessidade:", value=h("dif_infra_detalhe"), height=68,
-            help="Detalhe a necessidade de infraestrutura, equipamento ou suporte gerencial (ex.: servidor GPU, armazenamento, acesso a dados)."
-        ) if f_di == "Sim" else ""
+            f_dap = st.selectbox("Apoio orientador?", ["Não", "Sim"], key="dap",
+                                  help="Houve necessidade de apoio do orientador/coordenador?")
+            f_di  = st.selectbox("Necessidade infraestrutura?", ["Não", "Sim"], key="di",
+                                  help="Há necessidade de infraestrutura, dados ou equipamento?")
+        f_dtq = st.text_area("Quais dificuldades?", value="", height=68,
+                              help="Descreva as dificuldades técnicas.") if f_dt == "Sim" else ""
+        f_did = st.text_area("Detalhe necessidade:", value="", height=68,
+                              help="Detalhe a necessidade de infraestrutura.") if f_di == "Sim" else ""
 
         st.markdown("---")
 
-        # ═══ SEÇÃO 7: CONSIDERAÇÕES FINAIS ═══
+        # ═══ SEÇÃO 7: CONSIDERAÇÕES FINAIS (limpo) ═══
         st.markdown("### 7. Considerações Finais")
-        f_cf = st.text_area("Fechamento (1-2 parágrafos)", value=h("consideracoes_finais"), height=150,
-                             help="Evolução do trabalho, aderência ao cronograma, expectativa para o próximo ciclo e contribuição para a entrega final do projeto.")
+        f_cf = st.text_area("Fechamento (1-2 parágrafos)", value="", height=150,
+                             help="Evolução do trabalho, aderência ao cronograma, expectativa para o próximo ciclo.")
 
         # ═══ SUBMISSÃO ═══
         submitted = st.form_submit_button("💾 Salvar Formulário", type="primary", use_container_width=True)
@@ -344,7 +289,8 @@ def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
                 "numero_termo": f_termo, "mes_execucao_num": mes_ref,
                 "_projeto": proj["nome_projeto"], "_coordenador": proj["coordenador"],
                 "nome_bolsista": f_nome, "periodo_referencia": f_periodo,
-                "data_preenchimento": f_data_preench, "mes_execucao": f_mes_exec,
+                "data_preenchimento": f_data_preench,
+                "mes_execucao": f"Mês {mes_ref} do projeto ({mes_label(mes_ref)})",
                 "responsavel": f_responsavel,
                 "atividade_principal": f_ativ_princ, "atividades_secundarias": f_ativ_sec,
                 "faixa_cronograma": f_faixa, "conexao_cronograma": f_conexao,
@@ -365,6 +311,11 @@ def exibir_formulario(bolsista: dict, proj: dict, mes_ref: int):
             # Gerar relatório imediatamente
             rel = gerar_relatorio(form_data, proj)
             st.session_state["rel_ind"] = rel
+
+            # Persistir relatório (local + GitHub)
+            fn_rel = salvar_relatorio(rel)
+            st.success(f"✅ Relatório salvo: **{fn_rel}**")
+
             # Limpar modo edição
             st.session_state.pop("modo_edicao", None)
 

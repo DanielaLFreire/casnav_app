@@ -8,20 +8,108 @@
   "mes_1_referencia": "Agosto/2025",
   "atividades": [
     {
-      "codigo": "3.1",
-      "nome": "Incremento do dataset",
-      "descricao": "Incrementar o dataset de imagens de embarcações, por meio de novos conjuntos de imagens e vídeos de câmeras e rotulações de imagens.",
+      "codigo": "1.1",
+      "nome": "Levantamento de dados hidrodinâmicos",
+      "descricao": "Levantamento de dados hidrodinâmicos do drone para inserção no modelo matemático do gêmeo digital.",
       "meses_inicio": 1,
       "meses_fim": 6,
-      "entregas": "1 dataset rotulado com diferentes classes de embarcações de superfície."
+      "entregas": "01 Relatório com dados hidrodinâmicos."
+    },
+    {
+      "codigo": "1.2",
+      "nome": "Levantamento de dados SONAR",
+      "descricao": "Aquisição de dados SONAR para criação de Banco de Dados de objetos submarinos.",
+      "meses_inicio": 7,
+      "meses_fim": 18,
+      "entregas": "01 Banco de dados de imagens subaquáticas"
+    },
+    {
+      "codigo": "1.3",
+      "nome": "Estimador de estados (kalman)",
+      "descricao": "Desenvolvimento de estimador de estados (Kalman) utilizando odometria visual (camera) e navegação inercial (IMU) para a malha de controle.",
+      "meses_inicio": 19,
+      "meses_fim": 24,
+      "entregas": "01 Algoritmo estimador de estados"
+    },
+    {
+      "codigo": "1.4",
+      "nome": "Fusão de dados",
+      "descricao": "Desenvolvimento e implementação de algortimos de fusão de dados a partir de sensores heterogêneos",
+      "meses_inicio": 19,
+      "meses_fim": 30,
+      "entregas": "01 Algoritmo de fusão de dados"
+    },
+    {
+      "codigo": "1.5",
+      "nome": "Calibração de trajetória",
+      "descricao": "Calibração dos parâmetros levantados na simulação, com testes no mar de trajetória com desvio autônomo de obstáculos.",
+      "meses_inicio": 25,
+      "meses_fim": 30,
+      "entregas": "01 Relatório de Testes e 01 algoritmo de desvio de obstáculos."
+    },
+    {
+      "codigo": "1.6",
+      "nome": "Testes de Comunicação em Grandes Distancias",
+      "descricao": "Testes em navegação autônoma a grandes distâncias da base de controle, utilizando equipamentos de comunicações integrados com o controle.",
+      "meses_inicio": 31,
+      "meses_fim": 36,
+      "entregas": "01 Relatório de testes"
+    },
+    {
+      "codigo": "2.1",
+      "nome": "Modelagem do cenário 3D",
+      "descricao": "Modelagem e otimização de cenário 3D para o simulador, recriando o cenário de operação da embarcação virtual.",
+      "meses_inicio": 1,
+      "meses_fim": 12,
+      "entregas": "01 cenário virtual"
+    },
+    {
+      "codigo": "2.2",
+      "nome": "Integração do simulador com software embarcado",
+      "descricao": "Integração do simulador com o software de controle e automação da embarcação.",
+      "meses_inicio": 13,
+      "meses_fim": 18,
+      "entregas": "01 módulo de software"
+    },
+    {
+      "codigo": "2.3",
+      "nome": "Sistema de calibração dinâmico",
+      "descricao": "Desenvolvimento de um sistema de calibração dinâmico para o drone de superfície.",
+      "meses_inicio": 19,
+      "meses_fim": 24,
+      "entregas": "01 Modelo matemático"
+    },
+    {
+      "codigo": "2.4",
+      "nome": "Integração do simulador com a plataforma de movimento",
+      "descricao": "Integração do simulador com a plataforma de movimento a ser adquirida para testes de limites de operação do drone em relação ao estado do mar.",
+      "meses_inicio": 25,
+      "meses_fim": 30,
+      "entregas": "01 relatório de testes"
+    },
+    {
+      "codigo": "2.5",
+      "nome": "Integração com módulos de controle da câmera",
+      "descricao": "Integração do simulador com módulos de controle da câmera de vídeo presente na embarcação real.",
+      "meses_inicio": 31,
+      "meses_fim": 36,
+      "entregas": "01 módulo de software"
+    },
+    {
+      "codigo": "3.1",
+      "nome": "Incremento do dataset",
+      "descricao": "Incrementar o atual dataset de imagens de embarcações, por meio de novos conjuntos de imagens e vídeos de câmeras, e rotulação das imagens.",
+      "meses_inicio": 1,
+      "meses_fim": 6,
+      "entregas": "01 dataset rotulado com diferentes classes de embarcações de superfície."
     },
     {
       "codigo": "3.2",
       "nome": "Armazenamento e acesso multiusuário",
-      "descricao": "Desenvolver solução de armazenamento e acesso multiusuário para os datasets do projeto.",
+      "descricao": "Implementar soluções de engenharia de dados para armazenamento e acesso multiusuário aos conjuntos de dados obtidos.",
       "meses_inicio": 7,
       "meses_fim": 12,
-      "entregas": "1 sistema de armazenamento e acesso multiusuário para datasets."
+      "entregas": "01 servidor de imagens rotuladas de embarcações de superfície."
     },
     {
       "codigo": "3.3",
@@ -29,15 +117,15 @@
       "descricao": "Pesquisar, treinar e validar modelos robustos de redes neurais profundas para detecção e classificação automática de embarcações de superfície.",
       "meses_inicio": 13,
       "meses_fim": 18,
-      "entregas": "1 modelo de rede neural profunda especializada em detecção e classificação automática de embarcações de superfície no ambiente marítimo."
+      "entregas": "01 Modelo de rede neural profunda especializada em detecção e classificação automática de embarcações de superfície no ambiente marítimo."
     },
     {
       "codigo": "3.4",
       "nome": "Solução para estabilização de vídeos",
-      "descricao": "Pesquisar, implementar e validar técnicas de estabilização de vídeos para uso no sistema de monitoramento.",
+      "descricao": "Pesquisar e implementar soluções híbridas para establização de vídeos a partir de câmeras embarcadas",
       "meses_inicio": 13,
-      "meses_fim": 18,
-      "entregas": "1 módulo de estabilização de vídeo para o sistema de monitoramento."
+      "meses_fim": 24,
+      "entregas": "01 software de estabilização de vídeo conjugado com plataforma eletromecânica"
     },
     {
       "codigo": "3.5",
@@ -45,7 +133,7 @@
       "descricao": "Pesquisar, implementar e validar técnicas clássicas de visão computacional complementares para detecção automática de embarcações de superfície.",
       "meses_inicio": 19,
       "meses_fim": 24,
-      "entregas": "1 módulo de visão computacional especializado em detectar automaticamente embarcações de superfície no ambiente marítimo."
+      "entregas": "Módulo de visão computacional especializados em detectar automaticamente embarcações de superfície no ambiente marítimo."
     },
     {
       "codigo": "3.6",
@@ -53,15 +141,39 @@
       "descricao": "Pesquisar, implementar e validar técnicas para estimar a localização de embarcações de superfície detectadas automaticamente.",
       "meses_inicio": 25,
       "meses_fim": 30,
-      "entregas": "1 biblioteca de estimadores de localização de superfície."
+      "entregas": "01 Biblioteca de estimadores de localização de embarcações de superfície."
     },
     {
       "codigo": "3.7",
       "nome": "Integração de IA/VC ao sistema de monitoramento",
-      "descricao": "Integrar as soluções de IA e VC obtidos ao sistema de monitoramento real já em operação (câmera fixas) e ao drone marítimo.",
+      "descricao": "Integrar as soluções de IA e visão computacional obtidas ao sistema de monitoramento real já em operação (câmeras fixas) e ao drone marítimo.",
       "meses_inicio": 31,
       "meses_fim": 36,
-      "entregas": "1 sistema de monitoramento costeiro robustecido por métodos inteligentes de análise de imagens."
+      "entregas": "01 Sistema de monitoramento costeiro robustecido por métodos inteligentes de análise de imagens."
+    },
+    {
+      "codigo": "4.1",
+      "nome": "Implementação de regras para agendamento.",
+      "descricao": "Implementação de regras de agendamento, controle de acesso e uso do LSAVMM.",
+      "meses_inicio": 1,
+      "meses_fim": 4,
+      "entregas": "01 Norma interna administrativa."
+    },
+    {
+      "codigo": "4.2",
+      "nome": "Formulário de agendamento",
+      "descricao": "Implementação de agendamento online para uso do LSAVMM.",
+      "meses_inicio": 5,
+      "meses_fim": 8,
+      "entregas": "01 Formulário de agendamento no site da instituição"
+    },
+    {
+      "codigo": "4.3",
+      "nome": "Comitê Gestor",
+      "descricao": "Implementação de Comitê Gestor relacionado à utilização multiusuária do LSVAMM",
+      "meses_inicio": 9,
+      "meses_fim": 13,
+      "entregas": "01 norma interna de implementação de Comitê Gestor"
     }
   ]
 }
