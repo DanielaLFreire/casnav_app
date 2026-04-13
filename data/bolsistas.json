@@ -10,26 +10,7 @@
       "data_inicio_bolsa": "2025-11-01",
       "valor_mensal": 0,
       "prazo_meses": 28,
-      "atividades_designadas": [
-        {
-          "codigo": "1.1",
-          "periodicidade": "Mês 1 ao Mês 6",
-          "meses_inicio": 1,
-          "meses_fim": 6
-        },
-        {
-          "codigo": "1.2",
-          "periodicidade": "Mês 7 ao Mês 18",
-          "meses_inicio": 7,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "1.5",
-          "periodicidade": "Mês 25 ao Mês 30",
-          "meses_inicio": 25,
-          "meses_fim": 30
-        }
-      ],
+      "atividades_designadas": [],
       "observacoes": "Atividades: 1.1, 1.2 e 1.5."
     },
     {
@@ -43,24 +24,6 @@
       "valor_mensal": 0,
       "prazo_meses": 28,
       "atividades_designadas": [
-        {
-          "codigo": "2.2",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "2.3",
-          "periodicidade": "Mês 19 ao Mês 24",
-          "meses_inicio": 19,
-          "meses_fim": 24
-        },
-        {
-          "codigo": "2.5",
-          "periodicidade": "Mês 31 ao Mês 36",
-          "meses_inicio": 31,
-          "meses_fim": 36
-        },
         {
           "codigo": "3.1",
           "periodicidade": "Mês 1 ao Mês 6",
@@ -83,8 +46,8 @@
       "observacoes": "Atividades: 2.2, 2.3, 2.5, 3.1, 3.2, 3.3"
     },
     {
-      "id": "gabriel_saad",
-      "nome": "Gabriel Saad",
+      "id": "gabriel",
+      "nome": "Gabriel Gomes",
       "nome_completo": "GABRIEL GOMES GONÇALVES",
       "numero_termo": "64/2025",
       "email": "gabriel.gomes134@hotmail.com",
@@ -142,44 +105,7 @@
       "data_inicio_bolsa": "2025-10-01",
       "valor_mensal": 0,
       "prazo_meses": 30,
-      "atividades_designadas": [
-        {
-          "codigo": "1.1",
-          "periodicidade": "Mês 1 ao Mês 6",
-          "meses_inicio": 1,
-          "meses_fim": 6
-        },
-        {
-          "codigo": "1.2",
-          "periodicidade": "Mês 7 ao Mês 18",
-          "meses_inicio": 7,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "1.5",
-          "periodicidade": "Mês 25 ao Mês 30",
-          "meses_inicio": 25,
-          "meses_fim": 30
-        },
-        {
-          "codigo": "2.2",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "2.3",
-          "periodicidade": "Mês 19 ao Mês 24",
-          "meses_inicio": 19,
-          "meses_fim": 24
-        },
-        {
-          "codigo": "2.5",
-          "periodicidade": "Mês 31 ao Mês 36",
-          "meses_inicio": 31,
-          "meses_fim": 36
-        }
-      ],
+      "atividades_designadas": [],
       "observacoes": "Atividades: 1.1, 1.2, 1.5, 2.2, 2.3, 2.5."
     },
     {
@@ -218,12 +144,6 @@
           "periodicidade": "Mês 25 ao Mês 30",
           "meses_inicio": 25,
           "meses_fim": 30
-        },
-        {
-          "codigo": "3.7",
-          "periodicidade": "Mês 31 ao Mês 36",
-          "meses_inicio": 31,
-          "meses_fim": 36
         }
       ],
       "observacoes": "Ingressou no mês 4 do projeto (novembro/2025). Dados extraídos do Termo de Concessão de Bolsa nº 66/2025."
@@ -231,22 +151,40 @@
     {
       "id": "dannylo_mauricio",
       "nome": "Dannylo C. Maurício",
-      "nome_completo": "Dannylo Cardoso Maurício",
-      "numero_termo": "7576_28",
-      "email": "danmauricio001@gmail.com",
-      "formacao": "Bacharel em Ciência da Computação",
-      "data_inicio_bolsa": "2026-01-01",
+      "nome_completo": "Dannylo C. Maurício",
+      "numero_termo": "",
+      "email": "",
+      "formacao": "",
+      "data_inicio_bolsa": "2025-08-01",
       "valor_mensal": 0,
-      "prazo_meses": 23,
+      "prazo_meses": 0,
       "atividades_designadas": [
         {
           "codigo": "3.1",
           "periodicidade": "Mês 1 ao Mês 6",
           "meses_inicio": 1,
           "meses_fim": 6
+        },
+        {
+          "codigo": "3.3",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "3.5",
+          "periodicidade": "Mês 19 ao Mês 24",
+          "meses_inicio": 19,
+          "meses_fim": 24
+        },
+        {
+          "codigo": "3.6",
+          "periodicidade": "Mês 25 ao Mês 30",
+          "meses_inicio": 25,
+          "meses_fim": 30
         }
       ],
-      "observacoes": "Sem atividades fixas definidas previamente.\nBolsista de outro projeto, porém auxiliando esse projeto."
+      "observacoes": "Dados completos a serem preenchidos."
     },
     {
       "id": "wanderson_correa",
@@ -260,42 +198,6 @@
       "prazo_meses": 30,
       "atividades_designadas": [
         {
-          "codigo": "1.1",
-          "periodicidade": "Mês 1 ao Mês 6",
-          "meses_inicio": 1,
-          "meses_fim": 6
-        },
-        {
-          "codigo": "1.2",
-          "periodicidade": "Mês 7 ao Mês 18",
-          "meses_inicio": 7,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "1.5",
-          "periodicidade": "Mês 25 ao Mês 30",
-          "meses_inicio": 25,
-          "meses_fim": 30
-        },
-        {
-          "codigo": "2.2",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "2.3",
-          "periodicidade": "Mês 19 ao Mês 24",
-          "meses_inicio": 19,
-          "meses_fim": 24
-        },
-        {
-          "codigo": "2.5",
-          "periodicidade": "Mês 31 ao Mês 36",
-          "meses_inicio": 31,
-          "meses_fim": 36
-        },
-        {
           "codigo": "3.1",
           "periodicidade": "Mês 1 ao Mês 6",
           "meses_inicio": 1,
@@ -308,18 +210,6 @@
           "meses_fim": 12
         },
         {
-          "codigo": "3.3",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "3.4",
-          "periodicidade": "Mês 13 ao Mês 24",
-          "meses_inicio": 13,
-          "meses_fim": 24
-        },
-        {
           "codigo": "3.5",
           "periodicidade": "Mês 19 ao Mês 24",
           "meses_inicio": 19,
@@ -330,6 +220,18 @@
           "periodicidade": "Mês 31 ao Mês 36",
           "meses_inicio": 31,
           "meses_fim": 36
+        },
+        {
+          "codigo": "3.3",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
+        },
+        {
+          "codigo": "3.4",
+          "periodicidade": "Mês 13 ao Mês 18",
+          "meses_inicio": 13,
+          "meses_fim": 18
         }
       ],
       "observacoes": "Atividades: 1.1, 1.2, 1.5, 2.2, 2.3, 2.5, 3.1, 3.2, 3.3, 3.4, 3.5, 3.7."
