@@ -233,8 +233,8 @@
       "nome": "Dannylo C. Maurício",
       "nome_completo": "Dannylo Cardoso Maurício",
       "numero_termo": "7576_28",
-      "email": "",
-      "formacao": "",
+      "email": "danmauricio001@gmail.com",
+      "formacao": "Bacharel em Ciência da Computação",
       "data_inicio_bolsa": "2026-01-01",
       "valor_mensal": 0,
       "prazo_meses": 23,
@@ -244,27 +244,9 @@
           "periodicidade": "Mês 1 ao Mês 6",
           "meses_inicio": 1,
           "meses_fim": 6
-        },
-        {
-          "codigo": "3.3",
-          "periodicidade": "Mês 13 ao Mês 18",
-          "meses_inicio": 13,
-          "meses_fim": 18
-        },
-        {
-          "codigo": "3.5",
-          "periodicidade": "Mês 19 ao Mês 24",
-          "meses_inicio": 19,
-          "meses_fim": 24
-        },
-        {
-          "codigo": "3.6",
-          "periodicidade": "Mês 25 ao Mês 30",
-          "meses_inicio": 25,
-          "meses_fim": 30
         }
       ],
-      "observacoes": "Dados completos a serem preenchidos."
+      "observacoes": "Sem atividades fixas definidas previamente.\nBolsista de outro projeto, porém auxiliando esse projeto."
     },
     {
       "id": "wanderson_correa",
